@@ -1,0 +1,39 @@
+:root {
+    /* colors */
+    --color-primary: #8aa624;
+    --color-primary-rgb: 138, 166, 36;
+    --color-secondary: #007474;
+    --color-secondary-rgb: 0, 116, 116;
+    --color-orange: #fea405;
+    --color-orange-rgb: 254, 164, 5;
+    --color-light-grey: #dfe0df;
+    --color-grey: #94b0b2;
+    --color-grey-rgb: 148, 176, 178;
+    --color-brown: #af7664;
+    --color-light-brown: #bf9385;
+    --color-medium-brown: #955b48;
+    --color-dark-brown: #493630;
+    --color-cool-brown: #ac8b67;
+    --color-text: #2f4858;
+    --color-bg: #ffede6;
+    --color-bg-2: #fff8f0;
+    --color-bg-2-rgb: 255, 248, 240;
+    --color-bg-rgb: 255, 237, 230;
+
+    /* spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+
+    /* layout */
+    --navbar-height: 64px;
+
+    /* border radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+
+    --font-family-1: "Dosis", sans-serif;
+    --font-family-2: "Abel", sans-serif;
+    --font-family-3: "Barlow Semi Condensed", sans-serif;
+}
