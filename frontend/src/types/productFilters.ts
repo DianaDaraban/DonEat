@@ -3,6 +3,6 @@ export interface ProductFilters {
     priceMax?: number;
     minQuantity?: number;
     availableUntil?: string;
-    location?: string;
+    location?: object;
     maxDistanceKm?: number;
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigation, Navigate } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Login from './pages/auth/Login.tsx'
 import Register from "./pages/auth/Register.tsx"
@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar/Navbar.tsx"
 import { ProductFilters } from "./types/productFilters.ts"
 import { ProductPublic } from "./types/Product.ts"
 import { ProductOrder } from "./constants/productOrder.ts"
+import CartPage from "./pages/cart/CartPage.tsx"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -18,22 +19,25 @@ function Logout() {
   return <Navigate to='/login' />
 }
 
-function RegisterAndLogout() {
-  localStorage.clear()
-  return <Register />
-}
+
+// function RegisterAndLogout() {
+//   localStorage.clear()
+//   return <Register />
+// }
 
 function App() {
   const [filters, setFilters] = useState<ProductFilters>({
     category: undefined,
     priceMax: undefined,
-    minQuantity: undefined,
+    minQuantity: 1,
     availableUntil: undefined,
     location: undefined,
     maxDistanceKm: undefined
   });
   const [orderBy, setOrderBy] = useState<ProductOrder>('newest')
   const [products, setProducts] = useState<ProductPublic[]>([]);
+  const [allProducts, setAllProducts] = useState<ProductPublic[]>([]);
+
 
 
 
@@ -52,37 +56,48 @@ function App() {
     return `${API_URL}/api/products/?${params.toString()}`;
   };
 
+
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchAllProducts = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/products/`);
+        const data: ProductPublic[] = await res.json();
+        setAllProducts(data);
+        setProducts(data);
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    fetchAllProducts();
+  }, [])
+
+  useEffect(() => {
+    const fetchFilteredProducts = async () => {
       try {
         const url = buildProductsUrl(filters);
         const res = await fetch(url);
-        if (!res.ok) {
-          console.error('Fetch failed', res.status);
-          return;
-        }
-        const data: ProductPublic[] = await res.json();
-        console.log('Fetched products:', data);
-        setProducts(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+        if (!res.ok) return;
 
-    fetchProducts();
+        const data: ProductPublic[] = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchFilteredProducts();
   }, [filters]);
 
-  // const handleCategoryChange = (selectedIds: number[]) => {
-  //   setFilters(prev => ({ ...prev, category: selectedIds }));
-  // };
 
   return (
-    <BrowserRouter>
+    <>
       <Navbar
         filters={filters}
         setFilters={setFilters}
-        orderBy={orderBy}
-        setOrderBy={setOrderBy} />
+        setOrderBy={setOrderBy}
+        allProducts={allProducts}
+      />
       <Routes>
         <Route path="/dashboard" element={
           <ProtectedRoute>
@@ -93,12 +108,13 @@ function App() {
           products={products}
           orderBy={orderBy}
         />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 

@@ -1,0 +1,3283 @@
+[
+    {
+        "nume": "ALBA",
+        "municipiu": [
+            {
+                "nume": "ALBA IULIA",
+                "localitate": [
+                    {
+                        "nume": "ALBA IULIA",
+                        "tip": "oras"
+                    },
+                    {
+                        "nume": "Bărăbanț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Micești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Oarda",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pâclișa",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "AIUD",
+                "localitate": [
+                    {
+                        "nume": "AIUD",
+                        "tip": "oras",
+                        "localitate": [
+                            {
+                                "nume": "Ciumbrud",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Gârbova de Jos",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Gârbova de Sus",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Gârbovița",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Sâncrai",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Țifra",
+                                "tip": "sat"
+                            }
+                        ]
+                    },
+                    {
+                        "nume": "Aiudul de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gâmbaș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Măgina",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Păgida",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "BLAJ",
+                "localitate": [
+                    {
+                        "nume": "BLAJ",
+                        "tip": "oras",
+                        "localitate": [
+                            {
+                                "nume": "Mănărade",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Spătac",
+                                "tip": "sat"
+                            }
+                        ]
+                    },
+                    {
+                        "nume": "Deleni-Obârșie",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Flitești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Izvoarele",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Petrisat",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tiur",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Veza",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "SEBEȘ",
+                "localitate": [
+                    {
+                        "nume": "SEBEȘ",
+                        "tip": "oras",
+                        "localitate": [
+                            {
+                                "nume": "Răhău",
+                                "tip": "sat"
+                            }
+                        ]
+                    },
+                    {
+                        "nume": "Lancrăm",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Petrești",
+                        "tip": "sat"
+                    }
+                ]
+            }
+        ],
+        "oras": [
+            {
+                "nume": "ABRUD",
+                "localitate": [
+                    {
+                        "nume": "ABRUD",
+                        "tip": "oras"
+                    },
+                    {
+                        "nume": "Abrud-Sat",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gura Cornei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Soharu",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "BAIA DE ARIEȘ",
+                "localitate": [
+                    {
+                        "nume": "BAIA DE ARIEȘ",
+                        "tip": "oras",
+                        "localitate": [
+                            {
+                                "nume": "Brăzești",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Cioara de Sus",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Muncelu",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Sartăș",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Simulești",
+                                "tip": "sat"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nume": "CÂMPENI",
+                "localitate": [
+                    {
+                        "nume": "CÂMPENI",
+                        "tip": "oras"
+                    },
+                    {
+                        "nume": "Boncești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Borlești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Botești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Certege",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Coasta Vâscului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dănduț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Bistrii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Capsei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dric",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fața Abrudului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Florești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Furduiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mihoești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Motorăști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Peste Valea Bistrii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poduri",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sorlița",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tomușești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Bistrii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Caselor",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vârși",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "CUGIR",
+                "localitate": [
+                    {
+                        "nume": "CUGIR",
+                        "tip": "oras"
+                    },
+                    {
+                        "nume": "Bocșitura",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bucuru",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Călene",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fețeni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Goașele",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mugești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vinerea",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "OCNA MUREȘ",
+                "localitate": [
+                    {
+                        "nume": "OCNA MUREȘ",
+                        "tip": "oras",
+                        "localitate": [
+                            {
+                                "nume": "Cisteiu de Mureș",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Micoșlaca",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Războieni-Cetate",
+                                "tip": "sat"
+                            }
+                        ]
+                    },
+                    {
+                        "nume": "Uioara de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Uioara de Sus",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "TEIUȘ",
+                "localitate": [
+                    {
+                        "nume": "TEIUȘ",
+                        "tip": "oras",
+                        "localitate": [
+                            {
+                                "nume": "Beldiu",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Căpud",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Coșlariu Nou",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Pețelca",
+                                "tip": "sat"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nume": "ZLATNA",
+                "localitate": [
+                    {
+                        "nume": "ZLATNA",
+                        "tip": "oras",
+                        "localitate": [
+                            {
+                                "nume": "Botești",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Budeni",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Dealu Roatei",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Dobrot",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Dumbrava",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Feneș",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Galați",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Izvoru Ampoiului",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Pătrângeni",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Pirita",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Pârău Gruiului",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Podu lui Paul",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Runc",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Ruși",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Suseni",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Trâmpoiele",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Valea Mică",
+                                "tip": "sat"
+                            },
+                            {
+                                "nume": "Vâltori",
+                                "tip": "sat"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "comuna": [
+            {
+                "nume": "Albac",
+                "localitate": [
+                    {
+                        "nume": "Albac",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bărăști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Budăiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cionești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Costești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Lămășoi",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Deve",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "După Pleșe",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fața",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pleșești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Potionci",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Rogoz",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Roșești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Rusești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sohodol",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tamborești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Almașu Mare",
+                "localitate": [
+                    {
+                        "nume": "Almașu Mare",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Almașu de Mijloc",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Brădet",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cheile Cibului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cib",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Glod",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Nădăștia",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Arieșeni",
+                "localitate": [
+                    {
+                        "nume": "Arieșeni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Avrămești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bubești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Casa de Piatră",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cobleș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Bajului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fața Cristesei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fața Lăpușului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Galbena",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hodobana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Izlaz",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Păntești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pătrăhăițești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poienița",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ravicești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sturu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ștei-Arieșeni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vanvucești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Avram Iancu",
+                "localitate": [
+                    {
+                        "nume": "Avram Iancu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Achimețești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Avrămești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bădăi",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Boldești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Călugărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Căsoaia",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cândești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cârăști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cârțulești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cocești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cocoșești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Coroiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Crișului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dolești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dumăcești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gojeiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Helerești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Incești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Jojei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mărtești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Orgești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pătruțești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Plai",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pușelești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șoicești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ștertești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Târsa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Târsa-Plai",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Maciului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Uțului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Verdești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vidrișoara",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Berghin",
+                "localitate": [
+                    {
+                        "nume": "Berghin",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ghirbom",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Henig",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Straja",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Bistra",
+                "localitate": [
+                    {
+                        "nume": "Bistra",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Aronești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bălești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bălești-Cătun",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârlești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cheleteni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ciuldești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Crețești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Muntelui",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dâmbureni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Durăști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gănești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gârde",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hodișești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hudricești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lipaia",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Largă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Merilor",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mihăiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Nămaș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Novăcești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Perjești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poiana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poiu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Rătitiș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Runcuri",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sălăgești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ștefanca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tolăcești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tomnatec",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Trișorești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Țărănești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vârși-Rontu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vârșii Mari",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vârșii Mici",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Blandiana",
+                "localitate": [
+                    {
+                        "nume": "Blandiana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Acmariu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ibru",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poieni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Răcătău",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Bucerdea Grânoasă",
+                "localitate": [
+                    {
+                        "nume": "Bucerdea Grânoasă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cornu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pădure",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pânca",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Bucium",
+                "localitate": [
+                    {
+                        "nume": "Bucium",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Anghelești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bisericani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bucium-Sat",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cerbu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ciuculești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Coleșeni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dogărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ferești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Florești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gura Izbitei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Helești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Izbicioara",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Izbita",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Jurcuiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lupulești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Măgura",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Muntari",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Petreni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poiana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poieni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Stâlnișoara",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Abruzel",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Albă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Cerbului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Negrilesii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Poienii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Șesii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Văleni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vâlcea",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Câlnic",
+                "localitate": [
+                    {
+                        "nume": "Câlnic",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Deal",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Cenade",
+                "localitate": [
+                    {
+                        "nume": "Cenade",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Capu Dealului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gorgan",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Cergău",
+                "localitate": [
+                    {
+                        "nume": "Cergău Mare",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cergău Mic",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lupu",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Ceru-Băcăinți",
+                "localitate": [
+                    {
+                        "nume": "Ceru-Băcăinți",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bolovănești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bulbuc",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cucuta",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Curpeni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dumbrăvița",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fântânele",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Groși",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Mare",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Viezuri",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Cetatea de Baltă",
+                "localitate": [
+                    {
+                        "nume": "Cetatea de Baltă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Crăciunelu de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sântămărie",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tătârlaua",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Ciugud",
+                "localitate": [
+                    {
+                        "nume": "Ciugud",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Drâmbar",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hăpria",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Limba",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șeușa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Teleac",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Ciuruleasa",
+                "localitate": [
+                    {
+                        "nume": "Ciuruleasa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bidigești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bodrești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Boglești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Buninginea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ghedulești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mătișești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Morărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vulcan",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Crăciunelu de Jos",
+                "localitate": [
+                    {
+                        "nume": "Crăciunelu de Jos",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Cricău",
+                "localitate": [
+                    {
+                        "nume": "Cricău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Craiva",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tibru",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Cut",
+                "localitate": [
+                    {
+                        "nume": "Cut",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Daia Română",
+                "localitate": [
+                    {
+                        "nume": "Daia Română",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Doștat",
+                "localitate": [
+                    {
+                        "nume": "Doștat",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Boz",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Doștatului",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Fărău",
+                "localitate": [
+                    {
+                        "nume": "Fărău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Heria",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Medveș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sânbenedic",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șilea",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Galda de Jos",
+                "localitate": [
+                    {
+                        "nume": "Galda de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Benic",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cetea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Galda de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lupșeni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Măgura",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mesentea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Oiejdea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poaiana Galdei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Răicani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Zăgriș",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Gârbova",
+                "localitate": [
+                    {
+                        "nume": "Gârbova",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cărpiniș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Reciu",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Gârda de Sus",
+                "localitate": [
+                    {
+                        "nume": "Gârda de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Biharia",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Frumos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Ordâncușii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dobrești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ghețari",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gârda Seacă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hanășești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Huzărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Izvoarele",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Munună",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ocoale",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Plai",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pliști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Scoarța",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Snide",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sucești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Hopârta",
+                "localitate": [
+                    {
+                        "nume": "Hopârta",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Silivaș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șpălnaca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Turdaș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vama Seacă",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Horea",
+                "localitate": [
+                    {
+                        "nume": "Horea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Baba",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Butești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dârlești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fericet",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Giurgiuț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Măncești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mătișești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Niculești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pătrușești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Petreasa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Preluca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Teiu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Trifești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Zânzești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Ighiu",
+                "localitate": [
+                    {
+                        "nume": "Ighiu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bucerdea Vinoasă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ighiel",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șard",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Țelna",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Întregalde",
+                "localitate": [
+                    {
+                        "nume": "Întregalde",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Geoagiului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ghioncani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Iliești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ivăniș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mărinești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Modolești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Necrilești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Popești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sfârcea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tecșești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Jidvei",
+                "localitate": [
+                    {
+                        "nume": "Jidvei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bălcaciu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Căpâlna de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Feisa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Veseuș",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Livezile",
+                "localitate": [
+                    {
+                        "nume": "Livezile",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Izvoarele",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poiana Aiudului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vălișoara",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Lopadea Nouă",
+                "localitate": [
+                    {
+                        "nume": "Lopadea Nouă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Asinip",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Beța",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Băgău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cicârd",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ciuguzel",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ocnișoara",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Odverem",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Lunca Mureșului",
+                "localitate": [
+                    {
+                        "nume": "Lunca Mureșului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gura Arieșului",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Lupșa",
+                "localitate": [
+                    {
+                        "nume": "Lupșa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârdești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârzan",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Curmătură",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "După Deal",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Geamăna",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hădărău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Holobani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lazuri",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mănăstire",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mărgaia",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mușca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pițiga",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pârâu-Cărbunări",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poșogani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șasa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Trifești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Holhorii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Lupșii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Șesii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Văi",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vința",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Meteș",
+                "localitate": [
+                    {
+                        "nume": "Meteș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ampoița",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Isca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Ampoiței",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Meteșului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pădurea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poiana Ampoiului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poiana Ursului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Presaca Ampoiului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Remetea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tăuți",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Văleni",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Mihalț",
+                "localitate": [
+                    {
+                        "nume": "Mihalț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cistei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Obreja",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Zărieș",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Mirăslău",
+                "localitate": [
+                    {
+                        "nume": "Mirăslău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cicău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Decea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lopadea Veche",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ormeniș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Rachiș",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Mogoș",
+                "localitate": [
+                    {
+                        "nume": "Mogoș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bărbești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârlești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârlești-Cătun",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârzogani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bocești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bogdănești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Butești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cojocani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cristești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mămăligani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Negrești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Oncești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poienile-Mogoș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tomești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Barnii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Bârluțești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Cocești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Giogești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Mlacii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Țupilor",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Noșlac",
+                "localitate": [
+                    {
+                        "nume": "Noșlac",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Căptălan",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Copand",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Găbud",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Stâna de Mureș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Ciuciului",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Ocoliș",
+                "localitate": [
+                    {
+                        "nume": "Ocoliș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Largă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Runc",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vidolm",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Ohaba",
+                "localitate": [
+                    {
+                        "nume": "Ohaba",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Colibi",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Măghierat",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Secășel",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Pianu",
+                "localitate": [
+                    {
+                        "nume": "Pianu de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pianu de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Plaiuri",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Purcăreți",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Strungari",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Poiana Vadului",
+                "localitate": [
+                    {
+                        "nume": "Poiana Vadului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Costești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Duduieni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Făgetu de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Făgetu de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hănășești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lupăiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Morcănești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Păștești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Petelei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Stănești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Ponor",
+                "localitate": [
+                    {
+                        "nume": "Ponor",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "După Deal",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Geogel",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Măcărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Bucurului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vale în Jos",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Poșaga",
+                "localitate": [
+                    {
+                        "nume": "Poșaga",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poșaga de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Corțești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Incești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Orăști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poșaga de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Săgagea",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Rădești",
+                "localitate": [
+                    {
+                        "nume": "Rădești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Leorinț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Meșcreac",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șoimuș",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Rimetea",
+                "localitate": [
+                    {
+                        "nume": "Rimetea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Colțești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Râmeț",
+                "localitate": [
+                    {
+                        "nume": "Râmeț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Boțani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Brădești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cheia",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cotorăști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Florești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Olteni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Făgetului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Inzelului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Mănăstirii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Poienii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Uzei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vlădești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Roșia Montană",
+                "localitate": [
+                    {
+                        "nume": "Roșia Montană",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bălmoșești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Blidești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bunta",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cărpiniș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Coasta Henții",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Corna",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Curături",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dăroaia",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gârda-Bărbulești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gura Roșiei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Iacobești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ignățești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șoal",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Țarina",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vârtop",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Roșia de Secaș",
+                "localitate": [
+                    {
+                        "nume": "Roșia de Secaș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ungurei",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Sălciua",
+                "localitate": [
+                    {
+                        "nume": "Sălciua de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Caselor",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dumești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sălciua de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sub Piatră",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Largă",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Săliștea",
+                "localitate": [
+                    {
+                        "nume": "Săliștea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mărgineni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Săliștea-Deal",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tărtăria",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Săsciori",
+                "localitate": [
+                    {
+                        "nume": "Săsciori",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Căpâlna",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dumbrava",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Laz",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Loman",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pleși",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Răchita",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sebeșel",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tonea",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Scărișoara",
+                "localitate": [
+                    {
+                        "nume": "Scărișoara",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârlești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Botești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fața-Lăzești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Florești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lăzești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lespezea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Maței",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Negești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Prelucă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Runc",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sfoartea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Știuleți",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Trâncești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Sâncel",
+                "localitate": [
+                    {
+                        "nume": "Sâncel",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Iclod",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pănade",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Sântimbru",
+                "localitate": [
+                    {
+                        "nume": "Sântimbru",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Coșlariu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dumitra",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Galtiu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Totoi",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Sohodol",
+                "localitate": [
+                    {
+                        "nume": "Sohodol",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Băzești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bilănești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bobărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Brădeana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Burzonești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Deoncești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dilimani",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Furduiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gura Sohodol",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hoancă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Joldișești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lazuri",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lehești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Luminești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Medrești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Morărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Munești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Năpăiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Nelegești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Nicorești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Peleș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poiana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Robești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sicoiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Surdești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sebișești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Șimocești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Țoci",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Verde",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vlădoșești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Stremț",
+                "localitate": [
+                    {
+                        "nume": "Stremț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Fața Pietrii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Geoagiu de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Geomal",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Șibot",
+                "localitate": [
+                    {
+                        "nume": "Șibot",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Balomiru de Câmp",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Băcăinți",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sărăcsău",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Șona",
+                "localitate": [
+                    {
+                        "nume": "Șona",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Alecuș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Biia",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Doptău",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Târnavei",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Sânmiclăuș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Sasului",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Șpring",
+                "localitate": [
+                    {
+                        "nume": "Șpring",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Carpen",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Carpenii de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Cunța",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Drașov",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vingard",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Șugag",
+                "localitate": [
+                    {
+                        "nume": "Șugag",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Arți",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bârsana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dobra",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Jidoștina",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mărtinie",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tău Bistra",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Unirea",
+                "localitate": [
+                    {
+                        "nume": "Unirea",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ciugudu de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ciugudu de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dumbrava",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Inoc",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Măhăceni",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Vadu Moților",
+                "localitate": [
+                    {
+                        "nume": "Vadu Moților",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bodești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Burzești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Frumos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lăzești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Necșești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poduri-Bricești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Popeștii de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Popeștii de Sus",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tomuțești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Toțești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vâltori",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Valea Lungă",
+                "localitate": [
+                    {
+                        "nume": "Valea Lungă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Făget",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Glogoveț",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lodroman",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Tăuni",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Vidra",
+                "localitate": [
+                    {
+                        "nume": "Vidra",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Băi",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bobărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bogdănești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Bordeștii Poieni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Culdești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Goiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dosu Luncii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dosu Văsești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Drăgoiești-Luncă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ficărești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gligorești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Goiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Haiducești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hărăști",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hoancă",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Jeflești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Bisericii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Goiești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Lunca Vesești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Modolești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Nemeși",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Oidești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pitărcești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pleșcuța",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poieni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ponorel",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Puiulețești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Runc",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Segaj",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Urdeș",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Morii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Văsești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vâlcăneasa",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vâlcești",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vârtănești",
+                        "tip": "sat"
+                    }
+                ]
+            },
+            {
+                "nume": "Vințu de Jos",
+                "localitate": [
+                    {
+                        "nume": "Vințu de Jos",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Ciocașu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Câmpu Goblii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Crișeni",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Dealu Ferului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Gura Cuțului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Hațegana",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Inuri",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Laz",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mătăcina",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Mereteu",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Pârău lui Mihai",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Poienița",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Stăuini",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Goblii",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea lui Mihai",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Valea Vințului",
+                        "tip": "sat"
+                    },
+                    {
+                        "nume": "Vurpăr",
+                        "tip": "sat"
+                    }
+                ]
+            }
+        ]
+    }
+]

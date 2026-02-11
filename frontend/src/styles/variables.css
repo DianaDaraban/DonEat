@@ -7,13 +7,18 @@
     --color-orange: #fea405;
     --color-orange-rgb: 254, 164, 5;
     --color-light-grey: #dfe0df;
+    --color-light-grey-rgb: 223, 224, 223;
     --color-grey: #94b0b2;
     --color-grey-rgb: 148, 176, 178;
     --color-brown: #af7664;
     --color-light-brown: #bf9385;
+    --color-light-brown-rgb: 191, 147, 133;
     --color-medium-brown: #955b48;
     --color-dark-brown: #493630;
     --color-cool-brown: #ac8b67;
+    --color-light-red: #ff5256;
+    --color-dark-red: #cd3032;
+    --color-light-red-rgb: 255, 82, 86;
     --color-text: #2f4858;
     --color-bg: #ffede6;
     --color-bg-2: #fff8f0;

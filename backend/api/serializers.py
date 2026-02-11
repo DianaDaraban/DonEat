@@ -1,24 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Category, Product
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'password']
-        extra_kwargs = {'password': {'write_only': True}}
-
-    def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
-        return user
-
-
-# class NoteSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Note
-#         fields = ['id', 'title', 'content', 'created_at', 'author']
-#         extra_kwargs = {'author': {'read_only': True}}
+from .models import Category, Product, Cart, CartItems
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -45,3 +27,24 @@ class ProductAdminSerializer(serializers.ModelSerializer):
             'is_available': {'read_only': True},
             'created_at': {'read_only': True},
         }
+
+class CartItemSerializer(serializers.ModelSerializer):
+    product_name = serializers.CharField(source='product.name', read_only=True)
+    product_image = serializers.ImageField(source='product.image', read_only=True)
+    class Meta:
+        model=CartItems
+        fields=[
+            'id',
+            'product',
+            'product_name',
+            'product_image',
+            'quantity',
+            'price_at_add',
+        ]
+        
+class CartSerializer(serializers.ModelSerializer):
+    items = CartItemSerializer(many=True)
+    
+    class Meta:
+        model=Cart
+        fields=['id', 'items', 'updated_at']

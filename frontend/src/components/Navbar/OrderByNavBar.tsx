@@ -1,29 +1,33 @@
-import styles from './Navbar.module.css'
-import { useState } from 'react'
+import styles from './Navbar.module.scss'
 import { ArrowDownUp } from 'lucide-react'
 import { ORDER_LIST, ProductOrder } from '../../constants/productOrder.ts'
 
 type OrderByProps = {
-    orderBy: ProductOrder;
+
     setOrderBy: (value: ProductOrder) => void;
+    setIsFilterDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    isOrderDropdownOpen: boolean;
+    setIsOrderDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function OrderByNavBar({ orderBy, setOrderBy }: OrderByProps) {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+function OrderByNavBar({  setOrderBy, setIsFilterDropdownOpen, isOrderDropdownOpen, setIsOrderDropdownOpen }: OrderByProps) {
 
     return (
         <div className={`${styles.order_container} flex flex-col`}>
             {/* Dropdown header */}
             <div
                 className={`${styles.order_dropdown_container} flex justify-between`}
-                onClick={() => setIsDropdownOpen(prev => !prev)}
+                onClick={() => {
+                    setIsFilterDropdownOpen(false)
+                    setIsOrderDropdownOpen(prev => !prev)
+                }}
             >
                 <span>Ordonează</span>
                 <ArrowDownUp className={styles.dropdown_icon} />
             </div>
 
             {/* Dropdown content */}
-            {isDropdownOpen && (
+            {isOrderDropdownOpen && (
                 <div
                     className={`${styles.radio_container} flex flex-col`}
                     onClick={(e) => e.stopPropagation()}
@@ -37,7 +41,8 @@ function OrderByNavBar({ orderBy, setOrderBy }: OrderByProps) {
                                 className={styles.radio_wrapper}
                                 onClick={() => {
                                     setOrderBy(item.value);
-                                    setIsDropdownOpen(prev => !prev);
+                                    setIsOrderDropdownOpen(prev => !prev);
+                                    setIsFilterDropdownOpen(false)
                                 }}
                             >
                                 <Icon size={16} className={styles.icon} />

@@ -1,36 +1,35 @@
-import { useState, FormEvent } from "react";
-import api from '../api.ts'
+import { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.ts";
-import '../styles/Form.css'
+import styles from '../styles/Form.module.scss'
 import LoadingIndicator from "./LoadingIndicator.tsx";
+import { useAuth } from "../context/useAuth.ts";
 
 type FormProps = {
-    route: string
-    method: string
+    method: "login" | "register"
+    onSuccess?: () => void
 }
 
-function Form({ route, method }: FormProps) {
+function Form({ method, onSuccess }: FormProps) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
+    const [role, setRole] = useState<"vendor" | "buyer">("vendor")
     const navigate = useNavigate()
+    const { user, login, register } = useAuth()
 
-    const name = method === 'login' ? 'Login' : 'Register'
+    const name = method === 'login' ? 'Autentificare' : 'Înregistrare'
+
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        setLoading(true)
         e.preventDefault()
+        onSuccess?.()
+        setLoading(true)
 
         try {
-            const res = await api.post(route, { username, password })
-
-            if (method === 'login') {
-                localStorage.setItem(ACCESS_TOKEN, res.data.access);
-                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-                navigate('/')
+            if (method === 'register') {
+                await register(username, password, role)
             } else {
-                navigate('/login')
+                await login(username, password)
             }
         }
         catch (error) {
@@ -40,24 +39,45 @@ function Form({ route, method }: FormProps) {
         }
     }
 
-    return <form onSubmit={handleSubmit} className='form-container'>
+    useEffect(() => {
+        if (!user) return
+
+        if (user.role === 'vendor') {
+            navigate('/dashboard')
+        } else {
+            navigate('/')
+        }
+    }, [user, navigate])
+
+
+    return <form onSubmit={handleSubmit} className={`${styles.form_container}`}>
         <h1>{name}</h1>
         <input
             type="text"
-            className="form-input"
+            className={`${styles.form_container__input}`}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
+            placeholder="Nume de utilizator"
         />
         <input
             type="password"
-            className="form-input"
+            className={`${styles.form_container__input}`}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="Parolă"
         />
+        {method === 'register' && (
+            <select
+                value={role}
+                onChange={(e) => setRole(e.target.value as "vendor" | "buyer")}
+                className={`${styles.form_container__input}`}
+            >
+                <option value="vendor">Vendor</option>
+                <option value="buyer">Buyer</option>
+            </select>
+        )}
         {loading && <LoadingIndicator />}
-        <button type="submit" className="form-button">{name}</button>
+        <button type="submit" className={`${styles.form_container__submit_button}`}>{name}</button>
     </form>
 }
 
