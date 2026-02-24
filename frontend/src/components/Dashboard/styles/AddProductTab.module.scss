@@ -1,25 +1,36 @@
 .addProductTab {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    min-width: 360px;
     max-width: 600px;
     margin: 0 auto;
-    padding: 1rem;
     background-color: #f9fafb;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(var(--color-grey-rgb), 0.3);
+    border-radius: 0.8rem;
+    gap: 1.2rem;
+    box-shadow: rgba(var(--color-grey-rgb), 0.2) 0px 4px 7px 1px, rgba(var(--color-grey-rgb), 0.1) 0px 4px 8px 1px;
 
     h2 {
-        font-size: 1.25rem;
         font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: #111827;
+        font-size: 1.2rem;
+        background:
+            linear-gradient(217deg, rgba(var(--color-primary-rgb), 0.8), transparent 70.71%),
+            linear-gradient(145deg, rgba(var(--color-secondary-rgb), 0.8), transparent 80.71%),
+            linear-gradient(380deg, rgba(var(--color-primary-rgb), 0.6), transparent 70.71%);
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border-radius: 0.8rem 0.8rem 0 0;
+        color: white;
+        text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
     }
 
-    input,
+    &__input,
     select,
     textarea {
-        width: 100%;
+        min-width: 320px;
+        width: 80%;
+        margin: 1rem;
         padding: 0.5rem;
         border: 1px solid #d1d5db;
         border-radius: 0.375rem;
@@ -27,8 +38,8 @@
         outline: none;
 
         &:focus {
-            border-color: #10b981;
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+            border-color: var(--color-primary);
+            box-shadow: 0 0 5px 1px rgba(var(--color-secondary-rgb), 0.2);
         }
     }
 
@@ -38,22 +49,90 @@
     }
 
     button {
-        padding: 0.5rem 1rem;
-        background-color: #10b981;
+        background-color: rgba(var(--color-secondary-rgb), 0.7);
+        border: 1px solid var(--color-secondary);
+        padding: 0.3rem .8rem;
         color: white;
+        border-radius: 6px;
         border: none;
-        border-radius: 0.375rem;
         font-weight: 500;
+        font-size: 1rem;
+        width: max-content;
+        margin-bottom: 1.5rem;
         cursor: pointer;
-        transition: all 0.2s;
+        align-self: center;
 
         &:hover {
-            background-color: #059669;
+            background-color: rgba(var(--color-secondary-rgb), 0.85);
         }
 
         &:disabled {
-            background-color: #6ee7b7;
+            background-color: rgba(var(--color-grey-rgb), 0.85);
             cursor: not-allowed;
         }
+    }
+
+    &__price_container {
+        display: flex;
+        gap: 1.5rem;
+        width: 80%;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 2.5rem;
+
+        &__input {
+            padding: 0 0.5rem;
+            border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.75);
+            flex: 1;
+        }
+
+        &__donation_container {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+
+        &__check {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            user-select: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                border: 1.5px solid var(--color-primary);
+                border-radius: 4px;
+                background: white;
+                transition: all 0.2s ease;
+            }
+        }
+    }
+
+    .hidden_checkbox {
+        display: none;
+    }
+
+    .hidden_checkbox:checked+.addProductTab__price_container__check::before {
+        background: rgba(var(--color-primary-rgb), .6);
+        border-color: var(--color-primary);
+    }
+
+    .hidden_checkbox:checked+.addProductTab__price_container__check::after {
+        content: "✔";
+        position: absolute;
+        left: 4.5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        color: white;
+        font-weight: bold;
+
     }
 }

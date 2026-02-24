@@ -40,12 +40,18 @@ function AuthProvider({ children }: Props) {
 
     const register = async (
         username: string,
+        email: string,
         password: string,
+        firstName: string,
+        lastName: string,
         role: UserRole
     ) => {
-        await api.post('/api/user/register/', {
+        await api.post('/api/accounts/register/', {
             username,
             password,
+            email,
+            first_name: firstName,
+            last_name: lastName,
             role_input: role
         })
 
@@ -65,7 +71,7 @@ function AuthProvider({ children }: Props) {
 
     return (
         <AuthContext.Provider
-            value={{ user, loading, login, register, logout }}>
+            value={{ user, setUser, loading, login, register, logout }}>
             {children}
         </AuthContext.Provider>
     )

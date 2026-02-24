@@ -5,6 +5,7 @@ export interface CartContextType {
     cart: CartState | null
     setCart: Dispatch<SetStateAction<CartState | null>>
     refreshCart: () => Promise<void>
+    clearCart: () => Promise<void>
     addProduct: (input: AddToCartInput) => Promise<void>
     loading: boolean
 }

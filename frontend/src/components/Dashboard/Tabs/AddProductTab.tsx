@@ -41,7 +41,7 @@ function AddProductTab() {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setForm(prev => ({ ...prev, [name]: value }));
+        setForm(prev => ({ ...prev, [name]: value, is_donation: false }));
     };
 
     const handleSubmit = async (e: FormEvent) => {
@@ -58,19 +58,12 @@ function AddProductTab() {
             formData.append('location', form.location);
             formData.append('expires_at', form.expires_at);
             formData.append('is_donation', String(form.is_donation));
-            if(form.image instanceof File){
+            if (form.image instanceof File) {
                 formData.append('image', form.image);
             }
-            // const payload = {
-            //     ...form,
-            //     price: Number(form.price),
-            //     quantity: Number(form.quantity),
-            //     is_available: true,
-            //     is_donation: form.is_donation || false,
-            //     image: form.image || ''
-            // };
+
             const res = await api.post("/api/admin/products/", formData, {
-                headers: {'Content-Type': 'multipart/form-data'}
+                headers: { 'Content-Type': 'multipart/form-data' }
             });
             console.log("Produs adăugat:", res.data);
             alert('Product added successfully!');
@@ -83,39 +76,40 @@ function AddProductTab() {
         }
     };
 
-
     return (
         <form onSubmit={handleSubmit} className={styles.addProductTab}>
-            <h2>Add New Product</h2>
+            <h2>Adaugă un produs nou</h2>
 
             <input
                 type="text"
                 name="title"
-                placeholder="Title"
+                placeholder="Denumire"
                 value={form.title}
                 onChange={handleChange}
                 required
+                className={styles.addProductTab__input}
             />
 
             <textarea
                 name="description"
-                placeholder="Description"
+                placeholder="Descriere"
                 value={form.description}
                 onChange={handleChange}
                 required
+                className={styles.addProductTab__input}
             />
 
-            <div className="flex gap-4">
+            <div className={styles.addProductTab__price_container}>
                 <input
                     type="number"
                     name="price"
-                    placeholder="Price"
+                    placeholder="Preț"
                     value={form.price}
                     onChange={handleChange}
                     required
-                    className="flex-1"
+                    className={styles.addProductTab__price_container__input}
                 />
-                <div className="flex items-center gap-2">
+                <div className={`${styles.addProductTab__price_container__donation_container} flex`}>
                     <input
                         type="checkbox"
                         id="isDonation"
@@ -128,18 +122,19 @@ function AddProductTab() {
                                 price: checked ? 0 : prev.price,
                             }));
                         }}
+                        className={styles.hidden_checkbox}
                     />
-                    <label htmlFor="isDonation">Free / Donation</label>
+                    <label htmlFor="isDonation" className={styles.addProductTab__price_container__check}>Gratuit / Donație</label>
                 </div>
 
                 <input
                     type="number"
                     name="quantity"
-                    placeholder="Quantity"
+                    placeholder="Cantitate"
                     value={form.quantity}
                     onChange={handleChange}
                     required
-                    className="flex-1"
+                    className={styles.addProductTab__price_container__input}
                 />
             </div>
 
@@ -149,7 +144,7 @@ function AddProductTab() {
                 onChange={handleChange}
                 required
             >
-                <option value="">Select category</option>
+                <option value="">Alege Categorie</option>
                 {categories.map(cat => (
                     <option key={cat.id} value={cat.id}>{cat.name}</option>
                 ))}
@@ -158,7 +153,7 @@ function AddProductTab() {
             <input
                 type="text"
                 name="location"
-                placeholder="Location / Address"
+                placeholder="Locație / Adresă"
                 value={form.location}
                 onChange={handleChange}
                 required
@@ -182,7 +177,7 @@ function AddProductTab() {
             />
 
             <button type="submit" disabled={loading}>
-                {loading ? <LoadingIndicator /> : "Add Product"}
+                {loading ? <LoadingIndicator /> : "Adaugă produs"}
             </button>
         </form>
     );

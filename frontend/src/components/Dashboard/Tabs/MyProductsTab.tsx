@@ -108,7 +108,7 @@ function MyProductsTab() {
     if (loading) return <LoadingIndicator />
 
     if (products.length === 0) {
-        return <p>You don’t have any products yet.</p>
+        return <p>Nu ai produse momentan.</p>
     }
 
     return (

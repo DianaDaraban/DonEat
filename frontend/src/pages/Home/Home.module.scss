@@ -509,6 +509,12 @@ form input[type="submit"]:hover {
 
     &__heart {
         fill: rgba(255, 255, 255, 0.657);
+        stroke: rgba(var(--color-light-red-rgb), .8);
+        // backdrop-filter: blur(4px);
+    }
+
+    &__heart_toggled {
+        fill: rgba(var(--color-light-red-rgb), .7);
         stroke: rgba(var(--color-light-red-rgb), .9);
         // backdrop-filter: blur(4px);
     }
@@ -527,4 +533,16 @@ form input[type="submit"]:hover {
         }
     }
 
+}
+
+.filter_count {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: rgba(var(--color-primary-rgb), .6);
+    margin-left: .5rem;
+    text-align: center;
+    color: white;
+    font-size: .9rem;
 }

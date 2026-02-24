@@ -78,12 +78,34 @@ function CartProvider({ children }: { children: ReactNode }) {
         }, [user, refreshCart]
     )
 
+    const clearCart = useCallback(async () => {
+        if (!user) {
+            setGuestCart([])
+            setCart({ items: [] })
+            return
+        }
+
+        try {
+            setLoading(true)
+
+            await fetch('/api/cart/clear', {
+                method: 'DELETE',
+                credentials: 'include'
+            })
+            setCart({ items: [] })
+        } catch (err) {
+            console.error('Failed to clear cart', err)
+        } finally {
+            setLoading(false)
+        }
+    }, [user])
+
     useEffect(() => {
         refreshCart();
     }, [refreshCart]);
 
     return (
-        <CartContext.Provider value={{ cart, setCart, refreshCart, addProduct, loading }}>
+        <CartContext.Provider value={{ cart, setCart, refreshCart, clearCart, addProduct, loading }}>
             {children}
         </CartContext.Provider>
     );

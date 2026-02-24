@@ -3,6 +3,8 @@ import { jwtDecode } from 'jwt-decode'
 import api from '../api.ts'
 import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants.ts'
 import { useState, useEffect, ReactNode } from 'react'
+// import { ACCESS_TOKEN } from '../constants.ts'
+// import { ReactNode } from 'react'
 import type { JWTPayload } from '../types/jwt.d.ts'
 
 interface ProtectedRouteProps {
@@ -14,21 +16,21 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
 
     const refreshToken = async (): Promise<void> => {
         const refreshToken = localStorage.getItem(REFRESH_TOKEN);
-        try{
-            const res = await api.post('/api/token/refresh/', {refresh: refreshToken})
-            if(res.status == 200){
+        try {
+            const res = await api.post('/api/token/refresh/', { refresh: refreshToken })
+            if (res.status == 200) {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)
                 setIsAuthorized(true)
             } else {
                 setIsAuthorized(false)
             }
-        } catch(error){
+        } catch (error) {
             console.log(error);
             setIsAuthorized(false);
         }
     }
 
-    useEffect( () => {
+    useEffect(() => {
         const checkAuth = async (): Promise<void> => {
             const auth = async (): Promise<void> => {
                 const token = localStorage.getItem(ACCESS_TOKEN)
@@ -47,7 +49,7 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
                     setIsAuthorized(true)
                 }
             }
-            
+
             try {
                 await auth()
             } catch {

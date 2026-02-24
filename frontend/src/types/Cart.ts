@@ -1,11 +1,12 @@
 export type ApiCartItem = {
     id: number
     product: number
-    product_name: string
+    product_title: string
     product_image: string
     price_at_add: string
     quantity: number
     updated_at: number
+    product_stock: number
 }
 
 export type CartState = {
@@ -20,6 +21,7 @@ export type CartItem = {
     image: string
     price: number
     updated_at?: number
+    stock: number
 }
 
 export type GuestCartItem = {
@@ -29,6 +31,7 @@ export type GuestCartItem = {
         name: string
         image: string
         price: number
+        stock: number
     }
 }
 
@@ -39,5 +42,6 @@ export type AddToCartInput = {
         name: string
         image: string
         price: number
+        stock: number
     }
 }

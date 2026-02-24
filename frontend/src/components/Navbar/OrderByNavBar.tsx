@@ -1,4 +1,4 @@
-import styles from './Navbar.module.scss'
+import styles from '../../pages/navbar/Navbar.module.scss'
 import { ArrowDownUp } from 'lucide-react'
 import { ORDER_LIST, ProductOrder } from '../../constants/productOrder.ts'
 

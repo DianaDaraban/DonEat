@@ -9,8 +9,9 @@ import { CartItem } from "../../types/Cart.ts"
 import { useAuth } from "../../context/useAuth.ts"
 import { getGuestCart, setGuestCart } from "../../utils/guestCart.ts"
 import { normalizeGuestItem } from "../../utils/cartNormalizer.ts"
+import api from "../../api.ts"
 import placeholderImage from '../../assets/default_image_icon.jpg'
-// const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL
 
 function CartPage() {
     const { cart, setCart, refreshCart, loading } = useCart()
@@ -37,12 +38,15 @@ function CartPage() {
     }
 
     const handleQuantityChange = async (item: CartItem, newQuantity: number) => {
-        if (newQuantity < 1) return;
+        const maxStock = item.stock
+        const validatedQuantity = Math.min(Math.max(newQuantity, 1), maxStock);
+
+        if (validatedQuantity < 1) return;
 
         if (!user) {
             const cart = getGuestCart()
             const existing = cart.find(el => el.productId === item.productId)
-            if (existing) existing.quantity = newQuantity
+            if (existing) existing.quantity = validatedQuantity
 
             setGuestCart(cart)
             setCart({ items: cart.map(normalizeGuestItem) })
@@ -56,7 +60,7 @@ function CartPage() {
 
         setCart(prev => {
             if (!prev) return prev
-            return { items: prev.items.map(el => el.id === item.id ? { ...el, quantity: newQuantity } : el) }
+            return { items: prev.items.map(el => el.id === item.id ? { ...el, quantity: validatedQuantity } : el) }
         })
 
         if (item.id !== undefined) {
@@ -64,7 +68,7 @@ function CartPage() {
         }
 
         try {
-            await updateCartItem(item.id!, newQuantity)
+            await updateCartItem(item.id!, validatedQuantity)
             await refreshCart()
         } catch (err) {
             console.error('Failed to update item', err)
@@ -96,17 +100,32 @@ function CartPage() {
         }
     }
 
-    const handleCheckout = () => {
+    const handleCheckout = async () => {
         if (!user) {
-            navigate('/login', {
-                state: { from: '/cart' }
-            })
-
-            return
+            navigate('/login', { state: { from: '/cart' } });
+            return;
         }
 
-        navigate('/checkout')
+        try {
+            const res = await api.post('/api/checkout/');
+            await refreshCart();
+
+            navigate(`/orders/${res.data.order_id}`);
+
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                alert(err.message);
+            } else if (typeof err === 'object' && err !== null && 'response' in err) {
+                const axiosErr = err as { response?: { data?: { error?: string } } };
+                alert(axiosErr.response?.data?.error || 'Eroare la finalizare comanda');
+            } else {
+                alert('Eroare la finalizare comanda');
+            }
+
+            await refreshCart();
+        }
     }
+
 
     const total = cart.items.reduce((acc, item) => acc += Number(item.price) * item.quantity, 0)
 
@@ -119,10 +138,9 @@ function CartPage() {
             </button>
             <div className={styles.cart_items}>
                 {cart.items.map((item) => {
-                    console.log(item)
                     return (<div key={item.productId} className={styles.cart_item}>
                         <img
-                            src={`${item.image ? item.image : placeholderImage}`}
+                            src={`${item.image ? item.image.includes(API_URL) ? item.image : API_URL + item.image : placeholderImage}`}
                             alt={item.name}
                             className={styles.cart_item_image}
                         />
@@ -140,8 +158,11 @@ function CartPage() {
                                 <span>{item.quantity}</span>
                                 <button
                                     onClick={() => handleQuantityChange(item, item.quantity + 1)}
-                                    disabled={updatingItems.includes(item.productId)}
                                     type="button"
+                                    disabled={
+                                        updatingItems.includes(item.productId) ||
+                                        item.quantity >= item.stock
+                                    }
                                 >
                                     +
                                 </button>

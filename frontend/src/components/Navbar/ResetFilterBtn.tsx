@@ -1,5 +1,5 @@
 import { RotateCcw } from 'lucide-react'
-import styles from './Navbar.module.scss'
+import styles from '../../pages/navbar/Navbar.module.scss'
 
 
 type ResetFilterProps = {

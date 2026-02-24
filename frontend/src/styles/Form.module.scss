@@ -43,3 +43,19 @@
         }
     }
 }
+
+.form_container__redirect {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+
+    a {
+        color: var(--color-primary);
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -60,3 +60,35 @@ class CartItems(models.Model):
 
     class Meta:
         unique_together = ('cart', 'product')
+
+
+class Order(models.Model):
+
+    STATUS_CHOICES = [
+        ('PENDING', 'În așteptare'),
+        ('CONFIRMED', 'Confirmată'),
+        ('SHIPPED', 'Expediată'),
+        ('DELIVERED', 'Livrată'),
+        ('CANCELLED', 'Anulată'),
+    ]
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default='PENDING')
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    price_at_purchase = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+class Wishlist(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='wishlist')
+    products = models.ManyToManyField(Product, related_name='wishlisted_by')

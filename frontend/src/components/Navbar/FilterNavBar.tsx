@@ -1,4 +1,4 @@
-import styles from './Navbar.module.scss'
+import styles from '../../pages/navbar/Navbar.module.scss'
 import { useState, useEffect, useMemo } from 'react'
 import { SlidersHorizontal, ChevronUp, ChevronDown, X } from 'lucide-react'
 import { ProductFilters } from '../../types/productFilters.ts'

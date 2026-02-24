@@ -4,9 +4,13 @@ import { ProductPublic } from '../../types/Product.ts'
 import { Package, HandCoins, MapPinCheckInside, Info, ShoppingBag, SquareMousePointer, ClockFading, Heart } from 'lucide-react'
 import { useCart } from '../../context/useCart.ts'
 import placeholderImage from '../../assets/default_image_icon.jpg'
+import { useWishlist } from '../../context/WishlistContext.tsx'
 
 function HomeCard({ product }: { product: ProductPublic }) {
     const { addProduct } = useCart()
+    const { wishlist, toggleWishlist } = useWishlist()
+    const isWishlisted = wishlist.includes(product.id)
+    console.log(wishlist, isWishlisted)
 
     const handleAddToCart = () => {
         addProduct({
@@ -16,16 +20,24 @@ function HomeCard({ product }: { product: ProductPublic }) {
                 name: product.title,
                 image: product.image ?? '',
                 price: Number(product.price ?? 0),
+                stock: product.stock
             }
         })
     }
 
     return (<div key={product.slug} className={styles.product_card_container}>
-        <div className={`${styles.wishlist_icon}`}>
+        <div
+            className={`${styles.wishlist_icon}`}
+            onClick={() => {
+                console.log("Apasat heart pentru:", product.id);
+                toggleWishlist(product.id);
+            }}
+        >
             <Heart
-                size={32}
-                className={`${styles.wishlist_icon__heart} cursor-pointer`}
-            /></div>
+                size={26}
+                className={`${isWishlisted ? styles.wishlist_icon__heart_toggled : styles.wishlist_icon__heart} cursor-pointer`}
+            />
+        </div>
         <a href="#" className={styles.product_card}>
             <div className={styles.product_card__img_container}>
                 <img src={product.image ? product.image : placeholderImage} alt="food" className={styles.product_card__img} />
