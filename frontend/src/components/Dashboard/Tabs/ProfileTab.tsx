@@ -119,6 +119,7 @@ function ProfileTab() {
     }, [user, setStats]);
 
     if (!user) return null;
+    console.log(user.avatar, form.avatarPreview, placeholderImage)
     return (
         <div className={styles.profile}>
             <div className={`${styles.card} flex flex-col justify-center items-center`}>
@@ -134,7 +135,10 @@ function ProfileTab() {
                                                 ? stats.store.logo
                                                 : API_URL + stats.store.logo
                                             : placeholderImage
-                                        : API_URL + user.avatar || form.avatarPreview || placeholderImage
+                                        : (user.avatar
+                                            ? API_URL + user.avatar
+                                            : (form.avatarPreview || placeholderImage)
+                                        )
                                 }
                                 alt="avatar"
                             />

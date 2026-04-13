@@ -18,6 +18,7 @@ export const DashboardStatsProvider = ({ children }: { children: ReactNode }) =>
             setStats(prev => ({
                 ...prev,
                 totalOrders: res.data.total_orders,
+                productsCount: res.data.products_count,
                 sales: res.data.total_sales,
                 store: res.data.store ?? null,
             }));

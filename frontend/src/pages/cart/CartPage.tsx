@@ -7,34 +7,30 @@ import LoadingIndicator from "../../components/LoadingIndicator.tsx"
 import { useNavigate } from "react-router-dom"
 import { CartItem } from "../../types/Cart.ts"
 import { useAuth } from "../../context/useAuth.ts"
+import { useWishlist } from "../../context/WishlistContext.tsx"
 import { getGuestCart, setGuestCart } from "../../utils/guestCart.ts"
 import { normalizeGuestItem } from "../../utils/cartNormalizer.ts"
 import api from "../../api.ts"
 import placeholderImage from '../../assets/default_image_icon.jpg'
+import { Heart, Trash, HandCoins } from 'lucide-react'
 const API_URL = import.meta.env.VITE_API_URL
 
 function CartPage() {
     const { cart, setCart, refreshCart, loading } = useCart()
     const [updatingItems, setUpdatingItems] = useState<number[]>([])
     const navigate = useNavigate();
-    const { user } = useAuth()
+    const { user } = useAuth();
+    const { toggleWishlist } = useWishlist();
 
 
     if (loading) {
         return <LoadingIndicator />
     }
 
-    const handleGoHome = () => {
-        navigate('/')
-    }
-
     if (!cart || cart.items.length === 0) {
-        return <>
-            <button className={styles.go_home_btn} onClick={handleGoHome}>
-                Înapoi la Home
-            </button>
-            <div>Coșul tău este gol.</div>
-        </>
+        return <div className={styles.empty_cart_container}>
+            <h2>Coșul tău este gol.</h2>
+        </div>
     }
 
     const handleQuantityChange = async (item: CartItem, newQuantity: number) => {
@@ -132,60 +128,95 @@ function CartPage() {
 
     return (
         <div className={styles.cart_container}>
-            <h2>Coșul tău</h2>
-            <button className={styles.go_home_btn} onClick={handleGoHome}>
-                Înapoi la Home
-            </button>
+            <h3>Coșul tău</h3>
             <div className={styles.cart_items}>
                 {cart.items.map((item) => {
                     return (<div key={item.productId} className={styles.cart_item}>
-                        <img
-                            src={`${item.image ? item.image.includes(API_URL) ? item.image : API_URL + item.image : placeholderImage}`}
-                            alt={item.name}
-                            className={styles.cart_item_image}
-                        />
+                        <div className={styles.image_wrapper}>
+                            <img
+                                src={`${item.image ? item.image.includes(API_URL) ? item.image : API_URL + item.image : placeholderImage}`}
+                                alt={item.name}
+                            />
+                        </div>
+
                         <div className={styles.cart_item_details}>
-                            <h3>{item.name}</h3>
-                            <p>Adăugat la: {dayjs(item.updated_at).format('DD/MM/YYYY')}</p>
-                            <div className={styles.cart_item_quantity}>
+                            <div className={styles.cart_item_details__header}>
+                                <div className={styles.cart_item_details__title}>{item.name}</div>
                                 <button
-                                    onClick={() => handleQuantityChange(item, item.quantity - 1)}
+                                    onClick={() => handleRemoveItem(item)}
                                     disabled={updatingItems.includes(item.productId)}
-                                    type="button"
+                                    className={styles.remove_button}
                                 >
-                                    -
+                                    <Trash size={13} />
+                                    <span>Șterge</span>
                                 </button>
-                                <span>{item.quantity}</span>
-                                <button
-                                    onClick={() => handleQuantityChange(item, item.quantity + 1)}
-                                    type="button"
-                                    disabled={
-                                        updatingItems.includes(item.productId) ||
-                                        item.quantity >= item.stock
-                                    }
-                                >
-                                    +
-                                </button>
+                                <Heart
+                                    className={styles.card_heart}
+                                    onClick={() => toggleWishlist(item.productId)}
+                                    fill='rgba(var(--color-light-red-rgb), 0.6)'
+                                    color='rgba(var(--color-light-red-rgb), 0.8)'
+                                    size={22}
+                                />
                             </div>
-                            <p>Preț per unitate: {item.price} lei</p>
-                            <p>Total: {Number(item.price) * item.quantity} lei</p>
-                            <button
-                                onClick={() => handleRemoveItem(item)}
-                                disabled={updatingItems.includes(item.productId)}
-                                className={styles.remove_button}
-                            >
-                                Șterge
-                            </button>
+                            <div className={styles.card_item_meta} style={{ marginRight: '1rem' }}>
+                                <span>Adăugat la</span>
+                                <span></span>
+                                <span>{dayjs(item.updated_at).format('DD/MM/YYYY')}</span>
+                            </div>
+
+                            <div className={styles.card_meta}>
+                                <div className={styles.cart_item_quantity}>
+                                    <button
+                                        onClick={() => handleQuantityChange(item, item.quantity - 1)}
+                                        disabled={updatingItems.includes(item.productId)}
+                                        type="button"
+                                    >
+                                        <span>-</span>
+                                    </button>
+                                    <span>{item.quantity}</span>
+                                    <button
+                                        onClick={() => handleQuantityChange(item, item.quantity + 1)}
+                                        type="button"
+                                        disabled={
+                                            updatingItems.includes(item.productId) ||
+                                            item.quantity >= item.stock
+                                        }
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <div className={styles.card_item_meta}>
+                                    <span>Preț per unitate</span>
+                                    <span></span>
+                                    <span>{item.price} lei</span>
+                                </div>
+                            </div>
+                            <div className={styles.card_meta}>
+                                <div className={styles.card_item_meta}>
+                                    <span>Total per produs</span>
+                                    <span></span>
+                                    <span>{Number(item.price) * item.quantity} lei</span>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>)
                 })}
             </div>
             <div className={styles.cart_summary}>
-                <h3>Total coș: {total} lei</h3>
+                <div className={styles.card_total}>
+                    <span>Total coș</span>
+                    <span></span>
+                    <span>{total} lei</span>
+                </div>
                 <button
                     className={styles.checkout_button}
                     onClick={handleCheckout}
-                >Finalizează comanda</button>
+                >
+                    <HandCoins />
+                    <span>Finalizează comanda</span>
+                </button>
             </div>
         </div>
     )

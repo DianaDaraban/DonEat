@@ -47,6 +47,7 @@ class VendorOrdersView(APIView):
                 'quantity': item.quantity,
                 'price': item.price_at_purchase,
                 'total': item.quantity * item.price_at_purchase,
+                'buyer_name': f"{item.order.user.first_name} {item.order.user.last_name}"
             })
 
         return Response(data)
@@ -55,16 +56,33 @@ class VendorOrdersView(APIView):
 class UpdateOrdersStatusView(APIView):
     permission_classes = [IsAuthenticated]
 
+    VALID_TRANSITIONS = {
+        "PENDING": ["CONFIRMED", "CANCELLED"],
+        "CONFIRMED": ["SHIPPED", "CANCELLED"],
+        "SHIPPED": ["DELIVERED"],
+        "DELIVERED": [],
+        "CANCELLED": [],
+    }
+
     def patch(self, request, pk):
         vendor = request.user
-        new_status = request.data.get('status')
+        new_status = request.data.get("status")
 
-        order = Order.objects.get(id=pk)
+        try:
+            order = Order.objects.get(id=pk)
+        except Order.DoesNotExist:
+            return Response({"error": "Order not found"}, status=404)
 
         if not OrderItem.objects.filter(order=order, product__owner=vendor).exists():
-            return Response({'error': 'Unauthorized'}, status=403)
+            return Response({"error": "Unauthorized"}, status=403)
+
+        if new_status not in self.VALID_TRANSITIONS.get(order.status, []):
+            return Response(
+                {"error": "Invalid status transition"},
+                status=400,
+            )
 
         order.status = new_status
         order.save()
 
-        return Response({'success': True})
+        return Response({"success": True})

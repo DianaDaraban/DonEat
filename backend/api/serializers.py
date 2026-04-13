@@ -11,10 +11,13 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductPublicSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
+    store_name = serializers.CharField(
+        source='owner.store.name', read_only=True)
+    slug_field = 'title'
 
     class Meta:
         model = Product
-        exclude = ['is_available', 'owner']
+        exclude = ['is_available']
 
 
 class ProductAdminSerializer(serializers.ModelSerializer):
@@ -64,16 +67,23 @@ class CartSerializer(serializers.ModelSerializer):
 class OrderItemSerializer(serializers.ModelSerializer):
     product_title = serializers.CharField(
         source='product.title', read_only=True)
+    product_image = serializers.ImageField(
+        source='product.image', read_only=True)
 
     class Meta:
         model = OrderItem
         fields = ['id', 'product', 'product_title',
-                  'quantity', 'price_at_purchase']
+                  'quantity', 'price_at_purchase', 'product_image']
 
 
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True, read_only=True)
+    buyer_first_name = serializers.CharField(
+        source='user.first_name', read_only=True)
+    buyer_last_name = serializers.CharField(
+        source='user.last_name', read_only=True)
 
     class Meta:
         model = Order
-        fields = ['id', 'created_at', 'total',  'user', 'status', 'items']
+        fields = ['id', 'created_at', 'total',  'user',
+                  'status', 'items', 'buyer_first_name', 'buyer_last_name']

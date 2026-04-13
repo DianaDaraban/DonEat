@@ -4,6 +4,7 @@ import styles from '../styles/Form.module.scss'
 import LoadingIndicator from "./LoadingIndicator.tsx";
 import { useAuth } from "../context/useAuth.ts";
 import { Link } from "react-router-dom";
+import { Eye, EyeOff } from 'lucide-react'
 
 type FormProps = {
     method: "login" | "register"
@@ -20,6 +21,7 @@ function Form({ method, onSuccess }: FormProps) {
     const [role, setRole] = useState<"vendor" | "buyer">("vendor")
     const navigate = useNavigate()
     const { user, login, register } = useAuth()
+    const [showPassword, setShowPassword] = useState(false)
 
     const name = method === 'login' ? 'Autentificare' : 'Înregistrare'
 
@@ -107,15 +109,23 @@ function Form({ method, onSuccess }: FormProps) {
                 />
             </>
         )}
-        <input
-            type="password"
-            className={`${styles.form_container__input}`}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Parolă"
-            minLength={6}
-            required
-        />
+        <div className={styles.password_input_container}>
+            <input
+                type={showPassword ? "text" : "password"}
+                className={`${styles.form_container__input}`}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Parolă"
+                minLength={6}
+                required
+            />
+            <div
+                className={styles.password_visibility}
+                onClick={() => setShowPassword((prev) => !prev)}>
+                {showPassword ? <Eye size={20} color="rgba(var(--color-secondary-rgb), .9)" /> : <EyeOff size={20} color="var(--color-grey)" />}
+            </div>
+        </div>
+
         {method === 'register' && (
             <select
                 value={role}

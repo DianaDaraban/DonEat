@@ -50,41 +50,50 @@ function WishlistItemCard({ product }: { product: ProductPublic }) {
                     <Heart
                         className={styles.card__heart}
                         onClick={() => toggleWishlist(product.id)}
+                        fill='rgba(var(--color-light-red-rgb), 0.6)'
                     />
                 </div>
 
-                <p className={styles.card__description}>
-                    {product.description}
-                </p>
+                <div className={styles.card__description}>
+                    <span className={styles.product_description_title}>Descriere</span>
+                    <span className={styles.product_description}>{product.description}</span>
+                </div>
 
                 <div className={styles.card__meta}>
 
                     <div className={styles.card__meta_item}>
-                        <Package size={16} />
+                        <Package size={20} color="var(--color-primary)" />
                         <span>{product.quantity} {product.unit}</span>
                     </div>
 
                     <div className={styles.card__meta_item}>
-                        <HandCoins size={16} />
+                        <HandCoins size={20} color="var(--color-primary)" />
                         <span>
                             {product.price ?? "Gratuit"} {product.price ? " lei" : ""}
                         </span>
                     </div>
 
                     <div className={styles.card__meta_item}>
-                        <MapPinCheckInside size={16} />
+                        <MapPinCheckInside size={20} color="var(--color-primary)" />
                         <span>{product.location}</span>
                     </div>
 
                 </div>
+                <div className={styles.vendor_add_btn_container}>
+                    <div className={styles.vendor_container}>
+                        <span>Vânzător</span>
+                        <span className={styles.vendor_store_name}>{product.store_name}</span>
+                    </div>
+                    <button
+                        onClick={handleAddToCart}
+                        className={styles.card__button}
+                    >
+                        <ShoppingBag size={16} />
+                        Adaugă în coș
+                    </button>
+                </div>
 
-                <button
-                    onClick={handleAddToCart}
-                    className={styles.card__button}
-                >
-                    <ShoppingBag size={16} />
-                    Adaugă în coș
-                </button>
+
 
             </div>
         </div>

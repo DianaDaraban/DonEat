@@ -58,6 +58,7 @@ class CartItems(models.Model):
     quantity = models.PositiveBigIntegerField(default=1)
     price_at_add = models.DecimalField(max_digits=10, decimal_places=2)
 
+
     class Meta:
         unique_together = ('cart', 'product')
 

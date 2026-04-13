@@ -6,7 +6,7 @@
     max-width: 600px;
     margin: 0 auto;
     background-color: #f9fafb;
-    border: 1px solid rgba(var(--color-grey-rgb), 0.3);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.6);
     border-radius: 0.8rem;
     gap: 1.2rem;
     box-shadow: rgba(var(--color-grey-rgb), 0.2) 0px 4px 7px 1px, rgba(var(--color-grey-rgb), 0.1) 0px 4px 8px 1px;
@@ -78,7 +78,13 @@
         width: 80%;
         justify-content: center;
         flex-wrap: wrap;
-        padding: 0 2.5rem;
+
+        &__input_container {
+            // width: 100%;
+            flex: 1;
+            display: flex;
+            gap: 0.5rem;
+        }
 
         &__input {
             padding: 0 0.5rem;

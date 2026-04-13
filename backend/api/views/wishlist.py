@@ -1,4 +1,5 @@
 
+from django.utils import timezone
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -12,8 +13,14 @@ class WishlistView(APIView):
 
     def get(self, request):
         wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+
+        products = wishlist.products.filter(
+            quantity__gt=0,
+            is_available=True,
+            expires_at__gt=timezone.now()
+        )
         serializer = ProductPublicSerializer(
-            wishlist.products.all(), many=True)
+            products, many=True)
         return Response(serializer.data)
 
     def post(self, request):

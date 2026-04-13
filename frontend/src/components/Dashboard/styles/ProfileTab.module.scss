@@ -8,14 +8,14 @@
     background: white;
     min-width: 600px;
     width: 70%;
-    border: 1px solid rgba(var(--color-grey-rgb), 0.3);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.8);
     border-radius: 0.8rem;
     gap: 1.2rem;
     box-shadow: rgba(var(--color-grey-rgb), 0.2) 0px 4px 7px 1px, rgba(var(--color-grey-rgb), 0.1) 0px 4px 8px 1px;
 
     &__title {
       font-weight: 600;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       // background-color: rgba(var(--color-primary-rgb), .15);
       background:
         linear-gradient(217deg, rgba(var(--color-primary-rgb), 0.8), transparent 70.71%),
@@ -174,7 +174,7 @@
           padding: 0.5rem 0.75rem;
           border-radius: 6px;
           max-width: 600px;
-          font-size: 1.1rem;
+          font-size: 0.95rem;
 
           &__edit_icon {
             color: var(--color-secondary);
@@ -186,7 +186,7 @@
           padding: 0.3rem 0.5rem;
           border-radius: 4px;
           border: 1px solid rgba(var(--color-secondary-rgb), 0.3);
-          font-size: 1rem;
+          font-size: .95rem;
 
           &:focus {
             border-color: #3b82f6;
@@ -293,7 +293,7 @@
       padding: 0.5rem 0.75rem;
       border-radius: 6px;
       max-width: 740px;
-      font-size: 1.1rem;
+      font-size: .95rem;
 
       &__edit_icon {
         color: var(--color-secondary);
@@ -305,7 +305,7 @@
       padding: 0.3rem 0.5rem;
       border-radius: 4px;
       border: 1px solid rgba(var(--color-secondary-rgb), 0.3);
-      font-size: 1rem;
+      font-size: .95rem;
 
       &:focus {
         border-color: #3b82f6;

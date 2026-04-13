@@ -1,12 +1,18 @@
+# The above class contains API views for listing and managing products with different permissions and
+# filtering options.
+# The above class contains API views for listing and managing products with different permissions and
+# filtering options.
 from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
+from django.db.models import Q
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import MultiPartParser, FormParser
 from ..models import Product
 from ..serializers import ProductAdminSerializer, ProductPublicSerializer
 from decimal import Decimal
+
 
 class ProductsPublicList(ListAPIView):
     serializer_class = ProductPublicSerializer
@@ -16,6 +22,21 @@ class ProductsPublicList(ListAPIView):
         now = timezone.now()
         filtered_product_list = Product.objects.filter(
             expires_at__gt=now, is_available=True)
+
+        search = self.request.query_params.get('search')
+        if search and len(search) >= 2:
+            direct_matches = filtered_product_list.filter(
+                Q(title__icontains=search) |
+                Q(description__icontains=search) |
+                Q(location__icontains=search)
+            )
+
+            category_matches = Product.objects.filter(
+                category__name__icontains=search
+            )
+
+            filtered_product_list = direct_matches | category_matches
+            filtered_product_list = filtered_product_list.distinct()
 
         selected_categories = self.request.query_params.getlist('category')
         if selected_categories:
@@ -45,7 +66,8 @@ class ProductsPublicList(ListAPIView):
         if location:
             filtered_product_list = filtered_product_list.filter(
                 location__icontains=location)
-
+        print("Final queryset:", list(
+            filtered_product_list.values_list("title", flat=True)))
         return filtered_product_list
 
 
@@ -67,3 +89,10 @@ class ProductAdminDetail(RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Product.objects.filter(owner=self.request.user)
+
+
+class ProductDetail(RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductPublicSerializer
+    permission_classes = [AllowAny]
+    lookup_field = 'slug'

@@ -3,6 +3,7 @@ import api from '../../../api.ts';
 import { Category } from '../../../types/Category.ts';
 import LoadingIndicator from '../../LoadingIndicator.tsx';
 import styles from '../../Dashboard/styles/AddProductTab.module.scss'
+import { useRef } from "react";
 
 const EMPTY_FORM = {
     title: '',
@@ -68,6 +69,10 @@ function AddProductTab() {
             console.log("Produs adăugat:", res.data);
             alert('Product added successfully!');
             setForm(EMPTY_FORM);
+            
+            if (fileInputRef.current) {
+                fileInputRef.current.value = "";
+            }
         } catch (err) {
             console.error(err);
             alert(`Error creating product: ${err}`);
@@ -75,6 +80,8 @@ function AddProductTab() {
             setLoading(false);
         }
     };
+
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     return (
         <form onSubmit={handleSubmit} className={styles.addProductTab}>
@@ -100,15 +107,19 @@ function AddProductTab() {
             />
 
             <div className={styles.addProductTab__price_container}>
-                <input
-                    type="number"
-                    name="price"
-                    placeholder="Preț"
-                    value={form.price}
-                    onChange={handleChange}
-                    required
-                    className={styles.addProductTab__price_container__input}
-                />
+                <div className={styles.addProductTab__price_container__input_container}>
+                    <input
+                        type="number"
+                        name="price"
+                        placeholder="Preț"
+                        value={form.price}
+                        onChange={handleChange}
+                        required
+                        className={styles.addProductTab__price_container__input}
+                    />
+                    <span className={styles.priceSuffix}>Lei</span>
+                </div>
+
                 <div className={`${styles.addProductTab__price_container__donation_container} flex`}>
                     <input
                         type="checkbox"
@@ -126,16 +137,18 @@ function AddProductTab() {
                     />
                     <label htmlFor="isDonation" className={styles.addProductTab__price_container__check}>Gratuit / Donație</label>
                 </div>
-
-                <input
-                    type="number"
-                    name="quantity"
-                    placeholder="Cantitate"
-                    value={form.quantity}
-                    onChange={handleChange}
-                    required
-                    className={styles.addProductTab__price_container__input}
-                />
+                <div className={styles.addProductTab__price_container__input_container}>
+                    <input
+                        type="number"
+                        name="quantity"
+                        placeholder="Cantitate"
+                        value={form.quantity}
+                        onChange={handleChange}
+                        required
+                        className={styles.addProductTab__price_container__input}
+                    />
+                    <span className={styles.priceSuffix}>Bucăți</span>
+                </div>
             </div>
 
             <select
@@ -157,6 +170,7 @@ function AddProductTab() {
                 value={form.location}
                 onChange={handleChange}
                 required
+                className={styles.addProductTab__input}
             />
 
             <input
@@ -165,15 +179,18 @@ function AddProductTab() {
                 value={form.expires_at}
                 onChange={handleChange}
                 required
+                className={styles.addProductTab__input}
             />
             <input
                 type="file"
+                ref={fileInputRef}
                 accept="image/*"
                 onChange={e => {
                     if (e.target.files && e.target.files[0]) {
                         setForm(prev => ({ ...prev, image: e.target.files![0] }))
                     }
                 }}
+                className={styles.addProductTab__input}
             />
 
             <button type="submit" disabled={loading}>

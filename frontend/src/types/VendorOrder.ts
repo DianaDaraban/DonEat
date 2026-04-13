@@ -7,4 +7,5 @@ export interface VendorOrder {
     quantity: string,
     price: number,
     total: number,
+    buyer_name: string,
 }

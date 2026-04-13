@@ -9,6 +9,11 @@ function Login() {
 
     const handleSuccess = () => navigate(from)
 
-    return <Form method='login' onSuccess={handleSuccess} />
+    return (
+        <div className='flex justify-center items-center w-full h-full'>
+            <Form method='login' onSuccess={handleSuccess} />
+        </div>
+    )
+
 }
 export default Login

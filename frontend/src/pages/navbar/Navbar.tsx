@@ -10,7 +10,8 @@ import {
     LogOut,
     ShoppingBag,
     UserCog,
-    Settings
+    Settings,
+    Search
 } from 'lucide-react'
 
 import { useState, useEffect } from 'react'
@@ -19,6 +20,7 @@ import publicApi from '../../apiPublic.ts'
 import { ProductFilters } from '../../types/productFilters.ts'
 import FilterNavbar from '../../components/Navbar/FilterNavBar.tsx'
 import OrderByNavBar from '../../components/Navbar/OrderByNavBar.tsx'
+import NotificationBell from '../../components/Navbar/NotificationBell.tsx'
 import { ProductOrder } from '../../constants/productOrder.ts'
 import { ProductPublic } from "../../types/Product.ts"
 
@@ -27,6 +29,7 @@ import { useAuth } from '../../context/useAuth.ts'
 import { useCart } from '../../context/useCart.ts'
 import { useDashboardTab } from '../../context/DashboardTabContext.tsx'
 import { useWishlist } from '../../context/WishlistContext.tsx'
+import AnimatedBackground from '../../styles/animatedBackground/AnimatedBackground.tsx'
 
 type NavbarProps = {
     filters: ProductFilters
@@ -41,6 +44,7 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
     const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false)
     const [isOrderDropdownOpen, setIsOrderDropdownOpen] = useState(false)
     const [openUserDropDown, setOpenUserDropDown] = useState(false)
+    const [searchValue, setSearchValue] = useState('')
 
     const { user, logout } = useAuth()
     const { cart } = useCart()
@@ -54,7 +58,10 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
         location.pathname.startsWith('/dashboard') ||
         location.pathname.startsWith('/orders') ||
         location.pathname.startsWith('/wishlist') ||
-        location.pathname.startsWith('/cart')
+        location.pathname.startsWith('/cart') ||
+        location.pathname.startsWith('/about') ||
+        location.pathname.startsWith('/contact') ||
+        location.pathname.startsWith('/products')
     )
 
     const itemsCount =
@@ -78,8 +85,12 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
     }
 
     const handleCartPage = () => {
-        navigate('/cart')
-        setOpenUserDropDown(false)
+        if (!user) {
+            navigate('/login')
+        } else {
+            navigate('/cart')
+            setOpenUserDropDown(false)
+        }
     }
 
     const handleDashboardTab = (tabLabel: string) => {
@@ -88,11 +99,33 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
         setOpenUserDropDown(false)
     }
 
-    const handleWishlistPage = () => navigate('/wishlist')
+    const handleWishlistPage = () => {
+        if (!user) {
+            navigate('/login')
+        } else {
+            navigate('/wishlist')
+        }
+    }
 
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.currentTarget.value
+
+        setSearchValue(value)
+    }
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setFilters(prev => ({
+                ...prev,
+                search: searchValue || undefined
+            }))
+        }, 400)
+        return () => clearTimeout(timeout)
+    }, [searchValue, setFilters])
+    console.log(user)
     return (
-        <nav className={`flex justify-between items-center ${styles.nav_container} relative`}>
-
+        <nav className={`flex justify-between items-center ${styles.nav_container}`}>
+            <AnimatedBackground />
             {/* Logo */}
             <div className={`flex ${styles.logo_container}`}>
                 <img
@@ -104,29 +137,57 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
             </div>
 
             {/* Filter / Search */}
-            {hideOverlay &&
-                <div className={`flex justify-between items-center ${styles.search_filter_container}`}>
 
-                    <FilterNavbar
-                        filters={filters}
-                        setFilters={setFilters}
-                        categories={categories}
-                        allProducts={allProducts}
-                        isFilterDropdownOpen={isFilterDropdownOpen}
-                        setIsFilterDropdownOpen={setIsFilterDropdownOpen}
-                        setIsOrderDropdownOpen={setIsOrderDropdownOpen}
-                    />
 
-                    <OrderByNavBar
-                        setOrderBy={setOrderBy}
-                        isOrderDropdownOpen={isOrderDropdownOpen}
-                        setIsOrderDropdownOpen={setIsOrderDropdownOpen}
-                        setIsFilterDropdownOpen={setIsFilterDropdownOpen}
-                    />
-
-                    <div className={`${styles.search_container} flex flex-col`} />
+            <div className={`${styles.navbar_pages_filters_container} flex flex-col`}>
+                <div className={styles.navbar_page_links_container}>
+                    <div onClick={() => navigate('/about')}>
+                        <span>Despre proiect</span>
+                    </div>
+                    <div onClick={() => navigate('/')}>Oferte</div>
+                    <div onClick={() => navigate('/contact')}>Contact</div>
                 </div>
-            }
+                {hideOverlay &&
+                    <div className={`flex justify-between items-center ${styles.search_filter_container}`}>
+
+                        <FilterNavbar
+                            filters={filters}
+                            setFilters={setFilters}
+                            categories={categories}
+                            allProducts={allProducts}
+                            isFilterDropdownOpen={isFilterDropdownOpen}
+                            setIsFilterDropdownOpen={setIsFilterDropdownOpen}
+                            setIsOrderDropdownOpen={setIsOrderDropdownOpen}
+                        />
+
+                        <OrderByNavBar
+                            setOrderBy={setOrderBy}
+                            isOrderDropdownOpen={isOrderDropdownOpen}
+                            setIsOrderDropdownOpen={setIsOrderDropdownOpen}
+                            setIsFilterDropdownOpen={setIsFilterDropdownOpen}
+                        />
+
+                        <div className={`${styles.search_container}`} >
+                            <input
+                                type="text"
+                                placeholder="Caută produse..."
+                                value={searchValue}
+                                onFocus={() => {
+                                    setIsFilterDropdownOpen(false)
+                                    setIsOrderDropdownOpen(false)
+                                }}
+                                onChange={(e) => handleSearchChange(e)}
+                            />
+                            <Search size={22} color='var(--color-text)' />
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+
+
+
 
             {/* Icons */}
             <div className={`flex gap-4 justify-between items-center ${styles.icon_container}`}>
@@ -142,7 +203,7 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
 
                         {user && (
                             <div className={`flex justify-between items-center ${styles.user_container__name_role}`}>
-                                <span>{user.username}</span>
+                                <span>{user.first_name} {user.last_name}</span>
                                 <span>
                                     {user.role === 'buyer' ? (
                                         <Wallet color='var(--color-light-red)' size={16} />
@@ -210,12 +271,14 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
                     </div>
                 </div>
 
+                {user && <NotificationBell />}
+
                 {/* Wishlist icon simplu */}
                 <div
                     className={styles.cart_items_badge}
                     onClick={handleWishlistPage}
                 >
-                    <Heart className="cursor-pointer" />
+                    <Heart className="cursor-pointer" fill={`${wishlist?.length > 0 ? 'rgba(var(--color-light-red-rgb), 0.75)' : 'transparent'}`} />
                     {wishlist?.length > 0 && <span>{wishlist.length}</span>}
                 </div>
                 {/* Cart */}

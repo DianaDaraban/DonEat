@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import styles from '../../pages/Home/Home.module.scss'
 import dayjs from 'dayjs'
 import { ProductPublic } from '../../types/Product.ts'
@@ -5,32 +6,50 @@ import { Package, HandCoins, MapPinCheckInside, Info, ShoppingBag, SquareMousePo
 import { useCart } from '../../context/useCart.ts'
 import placeholderImage from '../../assets/default_image_icon.jpg'
 import { useWishlist } from '../../context/WishlistContext.tsx'
+import { useAuth } from '../../context/useAuth.ts'
+const API_URL = import.meta.env.VITE_API_URL;
 
 function HomeCard({ product }: { product: ProductPublic }) {
     const { addProduct } = useCart()
     const { wishlist, toggleWishlist } = useWishlist()
     const isWishlisted = wishlist.includes(product.id)
-    console.log(wishlist, isWishlisted)
+    const { user } = useAuth()
+    const navigate = useNavigate()
 
-    const handleAddToCart = () => {
-        addProduct({
-            productId: product.id,
-            quantity: 1,
-            cached: {
-                name: product.title,
-                image: product.image ?? '',
-                price: Number(product.price ?? 0),
-                stock: product.stock
-            }
-        })
+    const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
+        if (!user) {
+            navigate('/login')
+        } else {
+            addProduct({
+                productId: product.id,
+                quantity: 1,
+                cached: {
+                    name: product.title,
+                    image: product.image ?? '',
+                    price: Number(product.price ?? 0),
+                    stock: product.stock
+                }
+            })
+        }
     }
 
-    return (<div key={product.slug} className={styles.product_card_container}>
+    return (<div
+        key={product.slug}
+        className={styles.product_card_container}
+        style={{ cursor: 'pointer' }}
+        onClick={() => navigate(`/products/${product.slug}`)}
+    >
         <div
             className={`${styles.wishlist_icon}`}
-            onClick={() => {
-                console.log("Apasat heart pentru:", product.id);
-                toggleWishlist(product.id);
+            onClick={(e) => {
+                e.stopPropagation()
+                if (!user) {
+                    navigate('/login')
+                } else {
+                    console.log("Apasat heart pentru:", product.id);
+                    toggleWishlist(product.id);
+                }
             }}
         >
             <Heart
@@ -40,7 +59,7 @@ function HomeCard({ product }: { product: ProductPublic }) {
         </div>
         <a href="#" className={styles.product_card}>
             <div className={styles.product_card__img_container}>
-                <img src={product.image ? product.image : placeholderImage} alt="food" className={styles.product_card__img} />
+                <img src={product.image ? product.image.includes(API_URL) ? product.image : API_URL + product.image : placeholderImage} alt="food" className={styles.product_card__img} />
             </div>
 
         </a>
@@ -76,7 +95,7 @@ function HomeCard({ product }: { product: ProductPublic }) {
 
             <button
                 className={`${styles.product_card_container__add_to_cart} flex justify-center items-center`}
-                onClick={handleAddToCart}
+                onClick={(e) => handleAddToCart(e)}
             >
                 <ShoppingBag size={20} strokeWidth={2} />
             </button>

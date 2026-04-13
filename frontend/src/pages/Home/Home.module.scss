@@ -1,9 +1,41 @@
+.main_container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    max-height: max-content;
+    z-index: 0;
+    overflow: hidden;
+    padding-bottom: 6rem;
+}
+
+.main_container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.818), rgba(var(--color-primary-rgb), 0.1)),
+        url('../../assets/images/background_1.jpg');
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    opacity: 0.5;
+    transform: translateY(150px);
+    z-index: -1;
+}
+
 .cards_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: .8rem;
-    padding: 1rem;
-    margin: 3rem 2rem;
+    padding: 8rem 1rem 1rem 1rem;
+    margin: 0 2rem;
+    z-index: -2;
+    // overflow: hidden;
+    isolation: isolate;
+    // height: 100vh;
+
 }
 
 
@@ -545,4 +577,20 @@ form input[type="submit"]:hover {
     text-align: center;
     color: white;
     font-size: .9rem;
+}
+
+.empty_state {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 1.2rem;
+    }
 }

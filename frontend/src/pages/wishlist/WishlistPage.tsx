@@ -5,6 +5,7 @@ import LoadingIndicator from '../../components/LoadingIndicator.tsx'
 import { ProductPublic } from '../../types/Product.ts'
 import { useWishlist } from '../../context/WishlistContext.tsx'
 import api from '../../api.ts'
+// import HomeCard from '../../components/HomeComponents/HomeCard.tsx'
 
 
 export default function Wishlist() {
@@ -38,9 +39,14 @@ export default function Wishlist() {
     }
 
     return (
-        <div className={`${style.main_wishlist_container} flex flex-col`}>
+        <div className={`${style.main_wishlist_container}`}>
             {products.map((product: ProductPublic) => (
-                <WishlistItemCard key={product.id} product={product} />
+                <WishlistItemCard
+                 key={product.id} 
+                 product={product} 
+                 
+                 />
+                // <HomeCard key={product.id} product={product} />
             ))}
         </div>
     )

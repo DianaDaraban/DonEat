@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import api from "../api.ts";
 import { ProductPublic } from "../types/Product.ts";
 import { WishlistContext } from "./WishlistContext.tsx";
+import { useAuth } from "./useAuth.ts";
 
 export const WishlistProvider = ({ children }: { children: React.ReactNode }) => {
     const [wishlist, setWishlist] = useState<number[]>([]);
     const [loading, setLoading] = useState(true);
+    const { user } = useAuth()
 
     const fetchWishlist = async () => {
         try {
@@ -38,8 +40,12 @@ export const WishlistProvider = ({ children }: { children: React.ReactNode }) =>
     }
 
     useEffect(() => {
-        fetchWishlist()
-    }, [])
+        if (user) {
+            fetchWishlist();
+        } else {
+            setWishlist([]);
+        }
+    }, [user]);
 
     return <WishlistContext.Provider value={{ wishlist, toggleWishlist, loading }}>
         {children}

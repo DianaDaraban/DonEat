@@ -7,17 +7,22 @@ import NotFound from "./pages/NotFound.tsx"
 import ProtectedRoute from "./components/ProtectedRoute.tsx"
 import Dashboard from "./pages/dashboard/Dashboard.tsx"
 import Navbar from "./pages/navbar/Navbar.tsx"
+import FooterComponent from "./components/Footer/FooterComponent.tsx"
 import { ProductFilters } from "./types/productFilters.ts"
 import { ProductPublic } from "./types/Product.ts"
 import { ProductOrder } from "./constants/productOrder.ts"
 import CartPage from "./pages/cart/CartPage.tsx"
 import OrdersPage from "./pages/orders/OrdersPage.tsx"
 import OrderDetailPage from "./pages/orders/OrderDetailPage.tsx"
+import AboutPage from "./pages/about/AboutPage.tsx"
+import ContactPage from "./pages/contact/ContactPage.tsx"
+import ProductDetailPage from "./pages/product/ProductDetailPage.tsx"
 import { DashboardTabProvider } from "./context/DashboardTabProvider.tsx"
 import { WishlistProvider } from "./context/WishlistProvider.tsx"
 import WishlistPage from './pages/wishlist/WishlistPage.tsx'
 import OrderSuccessPage from "./pages/orders/OrderSuccessPage.tsx"
 import CheckoutPage from "./pages/checkout/CheckoutPage.tsx"
+import { NotificationProvider } from "./context/NotificationProvider.tsx"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -39,7 +44,8 @@ function App() {
     minQuantity: 1,
     availableUntil: undefined,
     location: undefined,
-    maxDistanceKm: undefined
+    maxDistanceKm: undefined,
+    search: undefined,
   });
   const [orderBy, setOrderBy] = useState<ProductOrder>('newest')
   const [products, setProducts] = useState<ProductPublic[]>([]);
@@ -99,40 +105,49 @@ function App() {
 
   return (
     <>
-      <WishlistProvider>
-        <DashboardTabProvider>
-          <Navbar
-            filters={filters}
-            setFilters={setFilters}
-            setOrderBy={setOrderBy}
-            allProducts={allProducts}
-          />
-          <Routes>
-            <Route path="/dashboard" element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } />
+      <NotificationProvider>
+        <WishlistProvider>
+          <DashboardTabProvider>
 
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/orders" element={<OrdersPage />} />
-            <Route path="/orders/:id" element={<OrderDetailPage />} />
-            <Route path="/orders-success/:orderId" element={<OrderSuccessPage />} />
-            <Route path='/wishlist' element={<WishlistPage />} />
+            <Navbar
+              filters={filters}
+              setFilters={setFilters}
+              setOrderBy={setOrderBy}
+              allProducts={allProducts}
+            />
+            <FooterComponent />
+            <div style={{ width: '100vw', height: '100vh' }}>
+              <Routes>
+                <Route path="/dashboard" element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                } />
+
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="products/:slug" element={<ProductDetailPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/orders" element={<OrdersPage />} />
+                <Route path="/orders/:id" element={<OrderDetailPage />} />
+                <Route path="/orders-success/:orderId" element={<OrderSuccessPage />} />
+                <Route path='/wishlist' element={<WishlistPage />} />
+                <Route path='/about' element={<AboutPage />} />
+                <Route path='/contact' element={<ContactPage />} />
 
 
-            <Route path="/" element={<Home
-              products={products}
-              orderBy={orderBy}
-            />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </DashboardTabProvider>
-      </WishlistProvider>
+                <Route path="/" element={<Home
+                  products={products}
+                  orderBy={orderBy}
+                />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </DashboardTabProvider>
+        </WishlistProvider >
+      </NotificationProvider>
     </>
   )
 }

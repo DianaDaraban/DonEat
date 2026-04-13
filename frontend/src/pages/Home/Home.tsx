@@ -3,6 +3,8 @@ import { ProductPublic } from "../../types/Product.ts"
 import styles from './Home.module.scss'
 import { ProductOrder } from "../../constants/productOrder.ts";
 import HomeCard from "../../components/HomeComponents/HomeCard.tsx";
+import { SearchAlert } from 'lucide-react'
+import AnimatedBackground from "../../styles/animatedBackground/AnimatedBackground.tsx";
 
 
 type HomeProps = {
@@ -44,12 +46,27 @@ function Home({ products, orderBy }: HomeProps) {
 
 
     return (
-        <div className={styles.cards_container}>
-            {sortedProducts.map((product, index) => (
-                <HomeCard key={index} product={product} />
-            ))}
+        <div className={styles.main_container}>
+            <div className={styles.cards_container}>
+                {/* <AnimatedBackground /> */}
+                {sortedProducts.length === 0 ? (
+                    <div className={styles.empty_state}>
+                        <div>
+                            <SearchAlert color="var(--color-light-red)" strokeWidth={2.4} size={30} />
+                            <h2>Ups...</h2>
+                        </div>
+
+                        <div>Nu am găsit produse care să corespundă căutării tale.</div>
+                    </div>
+                ) : (
+                    sortedProducts.map((product) => (
+                        <HomeCard key={product.id} product={product} />
+                    ))
+                )}
+            </div>
         </div>
-    );
+
+    )
 
 }
 export default Home

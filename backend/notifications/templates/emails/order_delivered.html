@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Comanda livrată</title>
+  </head>
+  <body style="margin: 0; padding: 0; background-color: #f7f7f7; font-family: Arial, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f7f7; padding: 30px 0;">
+      <tr>
+        <td align="center">
+          <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+            <tr>
+              <td style="background-color: #2e7d32; padding: 24px; text-align: center; color: white;">
+                <h1 style="margin: 0; font-size: 28px;">DoneAt</h1>
+                <p style="margin: 8px 0 0; font-size: 16px;">Comanda ta a fost livrată cu succes</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 32px 36px; color: #333333;">
+                <h2 style="margin-top: 0; font-size: 24px;">Salut, {{ user_name }}!</h2>
+
+                <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">
+                  Avem vești bune — comanda ta <strong>#{{ order_id }}</strong> a fost livrată.
+                </p>
+
+                <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">
+                  Îți mulțumim că ai ales <strong>DonEat</strong> și că contribui la reducerea risipei alimentare.
+                </p>
+
+                <div style="background-color: #f1f8e9; border-left: 4px solid #2e7d32; padding: 16px; margin: 24px 0; border-radius: 8px;">
+                  <p style="margin: 0; font-size: 15px; color: #2e7d32;">
+                    <strong>Număr comandă:</strong> #{{ order_id }}
+                  </p>
+                </div>
+
+                <p style="font-size: 15px; line-height: 1.6; margin: 0 0 24px;">Sperăm să te bucuri de produsele primite. Te așteptăm cu drag și la următoarea comandă!</p>
+
+                <div style="text-align: center; margin: 30px 0;">
+                  <a href="{{ site_url }}" style="display: inline-block; background-color: #2e7d32; color: #ffffff; text-decoration: none; padding: 14px 24px; border-radius: 8px; font-size: 16px; font-weight: bold;">Vezi comenzile mele</a>
+                </div>
+
+                <p style="font-size: 14px; color: #666666; line-height: 1.6; margin-top: 32px;">
+                  Cu drag,<br />
+                  Echipa DoneAt
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #f0f0f0; padding: 18px 24px; text-align: center; font-size: 12px; color: #888888;">Acest email a fost trimis automat. Te rugăm să nu răspunzi la acest mesaj.</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

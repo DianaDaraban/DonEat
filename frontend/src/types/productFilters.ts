@@ -5,4 +5,5 @@ export interface ProductFilters {
     availableUntil?: string;
     location?: object;
     maxDistanceKm?: number;
+    search?: string;
 }

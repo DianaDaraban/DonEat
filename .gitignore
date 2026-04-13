@@ -1,0 +1,38 @@
+# =====================
+# FRONTEND (React)
+# =====================
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr
+frontend/*.local
+frontend/src/assets/videos/
+
+# =====================
+# BACKEND (Django)
+# =====================
+__pycache__/
+**/__pycache__/
+*.pyc
+db.sqlite3
+backend/db.sqlite3
+
+# media (uploads)
+backend/media/
+
+# =====================
+# ENV
+# =====================
+.env
+backend/.env
+frontend/.env
+
+# =====================
+# GENERAL
+# =====================
+.vscode/
+.idea/
+.DS_Store
+node_modules/
+
+# media
+backend/media/

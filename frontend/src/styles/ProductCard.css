@@ -1,0 +1,27 @@
+.product-card {
+    border: 1px solid hsla(0, 0%, 87%, 0.7);
+    padding: 1rem;
+}
+
+.product-name {
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 0.5rem 0 0.25rem 0;
+}
+
+.product-price span {
+    font-weight: 500;
+    /* font-size: 1.125rem; */
+}
+
+.product-vendor span {
+    font-weight: 500;
+    /* font-size: 1.125rem; */
+}
+
+.product-description div {
+    font-weight: 300;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    /* font-size: 1.125rem; */
+}

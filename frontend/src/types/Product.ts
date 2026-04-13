@@ -14,7 +14,8 @@ export interface ProductPublic {
     slug: string;
     location: string;
     image?: string;
-    stock: number
+    stock: number;
+    store_name: string;
 }
 
 export interface ProductLocalStorage {

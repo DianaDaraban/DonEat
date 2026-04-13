@@ -1,0 +1,132 @@
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    // background: #f8fafc;
+    mix-blend-mode: multiply;
+}
+
+/* stil comun pentru blob-uri */
+.blob {
+    position: absolute;
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+    filter: blur(60px);
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    // mix-blend-mode: screen;
+    animation: float 35s infinite ease-in-out,
+        morph 18s infinite alternate ease-in-out,
+        hueShift 25s infinite linear;
+}
+
+/* fiecare blob diferit */
+.blob:nth-child(1) {
+    width: 500px;
+    height: 500px;
+    // background: rgba(var(--color-light-red-rgb), 0.6);
+    background: radial-gradient(circle at 30% 30%,
+            rgba(var(--color-light-red-rgb), 0.9),
+            rgba(var(--color-light-red-rgb), 0.5),
+            transparent 70%);
+    top: 10%;
+    left: 15%;
+    // animation-duration: 45s, 20s, 30s;
+    animation-duration: 25s, 10s, 18s;
+}
+
+.blob:nth-child(2) {
+    width: 600px;
+    height: 600px;
+    // background: rgba(var(--color-primary-rgb), 0.6);
+    background: radial-gradient(circle at 70% 40%,
+            rgba(var(--color-primary-rgb), 0.9),
+            rgba(var(--color-primary-rgb), 0.4),
+            transparent 70%);
+    bottom: 10%;
+    right: 10%;
+    // animation-duration: 35s;
+    // animation-duration: 55s, 22s, 40s;
+    animation-duration: 35s, 15s, 22s;
+}
+
+.blob:nth-child(3) {
+    width: 400px;
+    height: 400px;
+    // background: rgba(var(--color-orange-rgb), 0.6);
+    background: radial-gradient(circle at 40% 60%,
+            rgba(var(--color-orange-rgb), 0.9),
+            rgba(var(--color-orange-rgb), 0.4),
+            transparent 70%);
+    top: 50%;
+    left: 60%;
+    // animation-duration: 28s;
+    // animation-duration: 35s, 16s, 28s;
+    animation-duration: 12s, 30s, 15s;
+}
+
+.blob:nth-child(4) {
+    width: 450px;
+    height: 450px;
+    // background: rgba(var(--color-secondary-rgb), 0.6);
+    background: radial-gradient(circle at 60% 30%,
+            rgba(var(--color-light-brown-rgb), 0.9),
+            rgba(var(--color-light-brown-rgb), 0.4),
+            transparent 70%);
+    bottom: 20%;
+    left: 30%;
+    // animation-duration: 20s;
+    // animation-duration: 50s, 24s, 38s;
+    animation-duration: 40s, 20s, 18s;
+}
+
+/* mișcare lentă */
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(180px, -120px) scale(1.1) rotate(10deg);
+    }
+
+    40% {
+        transform: translate(-150px, 200px) scale(0.95) rotate(-10deg);
+    }
+
+    60% {
+        transform: translate(120px, 150px) scale(1.15) rotate(30deg);
+    }
+
+    80% {
+        transform: translate(-200px, -100px) scale(1.05) rotate(-15deg);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+}
+
+/* formă organică */
+@keyframes morph {
+    0% {
+        border-radius: 45% 55% 60% 40% / 60% 40% 60% 40%;
+    }
+
+    100% {
+        border-radius: 70% 30% 40% 60% / 50% 70% 30% 50%;
+    }
+}
+
+
+@keyframes hueShift {
+    0% {
+        filter: blur(80px) hue-rotate(0deg);
+    }
+
+    100% {
+        filter: blur(40px) hue-rotate(360deg);
+    }
+}
