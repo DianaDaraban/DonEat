@@ -11,7 +11,11 @@ import {
     ShoppingBag,
     UserCog,
     Settings,
-    Search
+    Search,
+    MapPin,
+    X,
+    LocateFixed,
+    PackagePlus
 } from 'lucide-react'
 
 import { useState, useEffect } from 'react'
@@ -21,6 +25,7 @@ import { ProductFilters } from '../../types/productFilters.ts'
 import FilterNavbar from '../../components/Navbar/FilterNavBar.tsx'
 import OrderByNavBar from '../../components/Navbar/OrderByNavBar.tsx'
 import NotificationBell from '../../components/Navbar/NotificationBell.tsx'
+import MapPicker from '../../components/Navbar/MapPicker.tsx'
 import { ProductOrder } from '../../constants/productOrder.ts'
 import { ProductPublic } from "../../types/Product.ts"
 
@@ -30,6 +35,7 @@ import { useCart } from '../../context/useCart.ts'
 import { useDashboardTab } from '../../context/DashboardTabContext.tsx'
 import { useWishlist } from '../../context/WishlistContext.tsx'
 import AnimatedBackground from '../../styles/animatedBackground/AnimatedBackground.tsx'
+import ConfirmModal from "../../components/ConfirmModal.tsx";
 
 type NavbarProps = {
     filters: ProductFilters
@@ -45,6 +51,12 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
     const [isOrderDropdownOpen, setIsOrderDropdownOpen] = useState(false)
     const [openUserDropDown, setOpenUserDropDown] = useState(false)
     const [searchValue, setSearchValue] = useState('')
+    const [showMap, setShowMap] = useState(false)
+    const [selectedLocation, setSelectedLocation] = useState({
+        lat: filters.lat ?? 44.439663,
+        lng: filters.lng ?? 26.096306
+    })
+    const [radius, setRadius] = useState(filters.radius ?? 5)
 
     const { user, logout } = useAuth()
     const { cart } = useCart()
@@ -61,8 +73,15 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
         location.pathname.startsWith('/cart') ||
         location.pathname.startsWith('/about') ||
         location.pathname.startsWith('/contact') ||
-        location.pathname.startsWith('/products')
+        location.pathname.startsWith('/products') ||
+        location.pathname.startsWith('/forgot-password') ||
+        location.pathname.startsWith('/reset-password')
     )
+    const [mapMessage, setMapMessage] = useState("");
+    const [mapMessageType, setMapMessageType] = useState<"success" | "error" | "">("");
+    const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+    const isActive = (path: string) => location.pathname === path;
 
     const itemsCount =
         cart?.items.reduce((acc, item) => acc + item.quantity, 0) ?? 0
@@ -73,16 +92,28 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
             .catch((err) => console.log(err))
     }, [])
 
+    useEffect(() => {
+        if (!mapMessage) return;
+
+        const timer = setTimeout(() => {
+            setMapMessage("");
+            setMapMessageType("");
+        }, 3500);
+
+        return () => clearTimeout(timer);
+    }, [mapMessage]);
+
     const handleUserClick = () => {
         if (!user) return navigate('/login')
         setOpenUserDropDown(prev => !prev)
     }
 
     const handleLogout = () => {
-        logout()
-        setOpenUserDropDown(false)
-        navigate('/login')
-    }
+        logout();
+        setOpenUserDropDown(false);
+        setShowLogoutModal(false);
+        navigate('/login');
+    };
 
     const handleCartPage = () => {
         if (!user) {
@@ -113,6 +144,71 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
         setSearchValue(value)
     }
 
+    const handleApplyMapFilter = () => {
+        setFilters(prev => ({
+            ...prev,
+            lat: selectedLocation.lat,
+            lng: selectedLocation.lng,
+            radius: radius,
+        }));
+
+        setShowMap(false);
+    };
+
+    const handleClearMapFilter = () => {
+        setFilters(prev => ({
+            ...prev,
+            lat: undefined,
+            lng: undefined,
+            radius: undefined,
+        }));
+
+        setSelectedLocation({
+            lat: 44.429588,
+            lng: 26.103854,
+        });
+
+        setRadius(5);
+        setShowMap(false);
+    };
+
+    const handleUseMyLocation = () => {
+        if (!navigator.geolocation) {
+            setMapMessage("Browserul nu suportă localizarea.");
+            setMapMessageType("error");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+
+                setSelectedLocation({ lat, lng });
+
+                setFilters(prev => ({
+                    ...prev,
+                    lat,
+                    lng,
+                    radius,
+                }));
+
+                setMapMessage("Locația ta a fost detectată.");
+                setMapMessageType("success");
+            },
+            () => {
+                setMapMessage("Nu am putut accesa locația. Verifică permisiunile browserului.");
+                setMapMessageType("error");
+            }
+        );
+    };
+
+    const handleAddProductPage = () => {
+        setActiveTab("Adaugă produs");
+        navigate("/dashboard");
+        setOpenUserDropDown(false);
+    };
+
     useEffect(() => {
         const timeout = setTimeout(() => {
             setFilters(prev => ({
@@ -122,7 +218,9 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
         }, 400)
         return () => clearTimeout(timeout)
     }, [searchValue, setFilters])
-    console.log(user)
+
+
+
     return (
         <nav className={`flex justify-between items-center ${styles.nav_container}`}>
             <AnimatedBackground />
@@ -141,11 +239,30 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
 
             <div className={`${styles.navbar_pages_filters_container} flex flex-col`}>
                 <div className={styles.navbar_page_links_container}>
-                    <div onClick={() => navigate('/about')}>
-                        <span>Despre proiect</span>
+                    <div
+                        onClick={() => navigate('/about')}
+                        className={isActive('/about') ? styles.active_link : ''}
+                    >
+                        <span>Despre noi</span>
                     </div>
-                    <div onClick={() => navigate('/')}>Oferte</div>
-                    <div onClick={() => navigate('/contact')}>Contact</div>
+
+                    <div
+                        onClick={() => navigate('/')}
+                        className={
+                            location.pathname === '/' || location.pathname.startsWith('/products')
+                                ? styles.active_link
+                                : ''
+                        }
+                    >
+                        Oferte
+                    </div>
+
+                    <div
+                        onClick={() => navigate('/contact')}
+                        className={isActive('/contact') ? styles.active_link : ''}
+                    >
+                        Contact
+                    </div>
                 </div>
                 {hideOverlay &&
                     <div className={`flex justify-between items-center ${styles.search_filter_container}`}>
@@ -180,6 +297,19 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
                             />
                             <Search size={22} color='var(--color-text)' />
                         </div>
+                        <button
+                            className={styles.map_filter_btn}
+                            onClick={() => {
+                                setShowMap(true);
+                                setIsFilterDropdownOpen(false);
+                                setIsOrderDropdownOpen(false);
+                            }}
+                        >
+                            <MapPin size={18} />
+                            <span>
+                                {filters.lat && filters.lng ? `${filters.radius} km` : "Hartă"}
+                            </span>
+                        </button>
                     </div>
                 }
             </div>
@@ -191,6 +321,16 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
 
             {/* Icons */}
             <div className={`flex gap-4 justify-between items-center ${styles.icon_container}`}>
+
+                {user?.role === "vendor" && (
+                    <button
+                        className={styles.add_product_nav_btn}
+                        onClick={handleAddProductPage}
+                    >
+                        <PackagePlus size={18} />
+                        <span>Adaugă produs</span>
+                    </button>
+                )}
 
                 {/* User */}
                 <div className="relative">
@@ -258,7 +398,7 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
                                 )}
 
                                 <div
-                                    onClick={handleLogout}
+                                    onClick={() => setShowLogoutModal(true)}
                                     className={`${styles.user_wrapper} flex whitespace-nowrap`}
                                 >
                                     <LogOut size={16} color='var(--color-secondary)' />
@@ -291,6 +431,87 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
                 </div>
 
             </div>
+            {showMap && (
+                <div className={styles.map_modal_overlay}>
+                    <div className={styles.map_modal}>
+                        <div className={styles.map_modal_header}>
+                            <h3>Alege zona</h3>
+                            <X
+                                className={styles.map_modal_close}
+                                onClick={() => setShowMap(false)}
+                            />
+                        </div>
+
+                        {mapMessage && (
+                            <div
+                                className={`${styles.form_message} ${mapMessageType === "success" ? styles.success : styles.error
+                                    }`}
+                            >
+                                {mapMessage}
+                            </div>
+                        )}
+
+                        <MapPicker
+                            initialLat={selectedLocation.lat}
+                            initialLng={selectedLocation.lng}
+                            products={allProducts}
+                            radius={radius}
+                            onCloseMap={() => setShowMap(false)}
+                            onChange={(lat, lng) => {
+                                setSelectedLocation({ lat, lng });
+                            }}
+                        />
+                        <div className={styles.use_location_radius_container}>
+                            <button
+                                className={styles.use_location_btn}
+                                onClick={handleUseMyLocation}
+                            >
+                                <LocateFixed size={22} />
+                                <span>Folosește locația mea</span>
+
+                            </button>
+
+
+                            <div className={styles.radius_container}>
+                                <label>Rază căutare</label>
+
+                                <select
+                                    value={radius}
+                                    onChange={(e) => setRadius(Number(e.target.value))}
+                                >
+                                    <option value={1}>1 km</option>
+                                    <option value={3}>3 km</option>
+                                    <option value={5}>5 km</option>
+                                    <option value={10}>10 km</option>
+                                    <option value={20}>20 km</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <div className={styles.map_modal_actions}>
+                            <button onClick={handleClearMapFilter}>
+                                Șterge filtrul
+                            </button>
+
+                            <button onClick={handleApplyMapFilter}>
+                                Aplică zona
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <ConfirmModal
+                open={showLogoutModal}
+                title="Te deconectezi?"
+                message="Ești sigur că vrei să ieși din cont?"
+                confirmText="Deconectare"
+                cancelText="Renunță"
+                danger
+                onCancel={() => setShowLogoutModal(false)}
+                onConfirm={handleLogout}
+            />
         </nav>
     )
 }

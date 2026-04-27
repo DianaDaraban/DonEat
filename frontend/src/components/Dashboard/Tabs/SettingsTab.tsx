@@ -12,12 +12,26 @@ interface Settings {
 export default function SettingsTab() {
     const { user } = useAuth();
     const [settings, setSettings] = useState<Settings | null>(null);
+    const [message, setMessage] = useState("");
+    const [messageType, setMessageType] = useState<"success" | "error" | "">("");
+    const [saving, setSaving] = useState(false);
 
     useEffect(() => {
         api.get("/api/notifications/settings/")
             .then(res => setSettings(res.data))
             .catch(() => setSettings({}));
     }, []);
+
+    useEffect(() => {
+        if (!message) return;
+
+        const timer = setTimeout(() => {
+            setMessage("");
+            setMessageType("");
+        }, 3500);
+
+        return () => clearTimeout(timer);
+    }, [message]);
 
     const toggle = (key: string) => {
         setSettings(prev => ({
@@ -27,8 +41,17 @@ export default function SettingsTab() {
     };
 
     const save = async () => {
-        await api.patch("/api/notifications/settings/", settings);
-        alert("Setările au fost salvate.");
+        try {
+            setSaving(true);
+            await api.patch("/api/notifications/settings/", settings);
+            setMessage("Setările au fost salvate.");
+            setMessageType("success");
+        } catch {
+            setMessage("Setările nu au putut fi salvate.");
+            setMessageType("error");
+        } finally {
+            setSaving(false);
+        }
     };
 
     if (!settings) return <LoadingIndicator />;
@@ -72,6 +95,14 @@ export default function SettingsTab() {
     return (
         <div className={styles.container}>
             <h2>Setări notificări</h2>
+            {message && (
+                <div
+                    className={`${styles.form_message} ${messageType === "success" ? styles.success : styles.error
+                        }`}
+                >
+                    {message}
+                </div>
+            )}
             <div className={styles.content}>
                 {sections.map(section => (
                     <div key={section.title} className={styles.section}>
@@ -113,8 +144,8 @@ export default function SettingsTab() {
                 </label>
             </div> */}
 
-            <button onClick={save} className={styles.save}>
-                Salvează
+            <button onClick={save} className={styles.save} disabled={saving}>
+                {saving ? "Se salvează..." : "Salvează"}
             </button>
         </div>
     );

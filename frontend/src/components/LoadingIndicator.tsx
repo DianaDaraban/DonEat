@@ -1,9 +1,11 @@
-import '../styles/LoadingIndicator.css'
+import styles from '../styles/LoadingIndicator.module.scss'
 
 const LoadingIndicator = () => {
-    return <div className="loading-container">
-        <div className="loader"></div>
-    </div>
+    return (
+        <div className={styles.overlay}>
+            <div className={styles.loader}></div>
+        </div>
+    )
 }
 
 export default LoadingIndicator

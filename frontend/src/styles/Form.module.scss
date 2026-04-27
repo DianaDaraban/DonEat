@@ -77,3 +77,57 @@
     right: .5rem;
     cursor: pointer;
 }
+
+
+.forgot_password {
+    width: 90%;
+    text-align: right;
+    font-size: 0.9rem;
+
+    a {
+        color: var(--color-secondary);
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+.form_page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_text {
+    width: 90%;
+    text-align: center;
+    color: rgba(var(--color-text-rgb), 0.75);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.form_message {
+    width: 90%;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: var(--color-secondary);
+    font-weight: 500;
+}
+
+.form_error {
+    width: 90%;
+    margin-bottom: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    background: rgba(var(--color-light-red-rgb), 0.12);
+    border: 1px solid rgba(var(--color-light-red-rgb), 0.45);
+    color: var(--color-dark-red);
+    font-weight: 500;
+    font-size: 0.92rem;
+    text-align: center;
+}

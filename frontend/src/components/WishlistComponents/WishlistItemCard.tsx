@@ -10,11 +10,13 @@ import {
 import { useWishlist } from "../../context/WishlistContext.tsx"
 import { useCart } from "../../context/useCart.ts"
 import placeholderImage from "../../assets/default_image_icon.jpg"
+import { useNavigate } from "react-router-dom"
 const API_URL = import.meta.env.VITE_API_URL;
 
 function WishlistItemCard({ product }: { product: ProductPublic }) {
     const { toggleWishlist } = useWishlist()
     const { addProduct } = useCart()
+    const navigate = useNavigate()
 
     const handleAddToCart = () => {
         addProduct({
@@ -82,7 +84,13 @@ function WishlistItemCard({ product }: { product: ProductPublic }) {
                 <div className={styles.vendor_add_btn_container}>
                     <div className={styles.vendor_container}>
                         <span>Vânzător</span>
-                        <span className={styles.vendor_store_name}>{product.store_name}</span>
+                        <span
+                            className={styles.vendor_store_name}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/store/${product.owner}`);
+                            }}
+                        >{product.store_name}</span>
                     </div>
                     <button
                         onClick={handleAddToCart}

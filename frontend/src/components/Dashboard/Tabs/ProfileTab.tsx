@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/useAuth.ts";
 import { useDashboardStats } from "../../../context/DashboardStatsContext.tsx";
 import styles from "../styles/ProfileTab.module.scss";
-import { SquarePen, X, Camera } from "lucide-react";
+import { SquarePen, X, Camera, Save } from "lucide-react";
 import api from "../../../api.ts";
 import placeholderImage from "../../../assets/default_image_icon.jpg";
 
@@ -28,6 +28,8 @@ function ProfileTab() {
         storeLogo: null as File | null,
         avatarFile: null as File | null,
         avatarPreview: "",
+        latitude: 0,
+        longitude: 0
     }));
 
 
@@ -40,7 +42,9 @@ function ProfileTab() {
                 lastName: user.last_name || "",
                 email: user.email || "", storeName: stats.store?.name || "",
                 storeDescription: stats.store?.description || "",
-                avatarPreview: user?.avatar || ""
+                avatarPreview: user?.avatar || "",
+                latitude: stats.store?.latitude || 0,
+                longitude: stats.store?.longitude || 0
             }));
         }, 0);
 
@@ -85,6 +89,14 @@ function ProfileTab() {
                 formData.append('name', form.storeName)
                 formData.append('description', form.storeDescription)
                 if (form.storeLogo) formData.append('logo', form.storeLogo)
+
+                if (form.latitude !== null && form.latitude !== undefined) {
+                    formData.append('latitude', String(form.latitude))
+                }
+
+                if (form.longitude !== null && form.longitude !== undefined) {
+                    formData.append('longitude', String(form.longitude))
+                }
 
                 if (stats.store && typeof stats.store === 'object') {
                     await api.put('/api/accounts/store/me/update/', formData)
@@ -307,6 +319,39 @@ function ProfileTab() {
                                         <div className={styles.field_display}>{form.storeDescription || "—"}</div>
                                     )}
                                 </div>
+                                <div className={styles.profile_field}>
+                                    <label className={styles.profile_field__section_label}>Coordonate adresă</label>
+                                    {editing.store ? (
+                                        <div className={`${styles.profile_field__name_input_wrapper} flex`}>
+                                            <span>Latitudine</span>
+                                            <input
+                                                value={form.latitude === 0 ? '' : form.latitude}
+                                                onChange={e => handleChange("latitude", e.target.value)}
+                                                className={styles.input_edit}
+                                            />
+                                            <span>Longitudine</span>
+                                            <input
+                                                value={form.longitude === 0 ? '' : form.longitude}
+                                                onChange={e => handleChange("longitude", e.target.value)}
+                                                className={styles.input_edit}
+                                            />
+                                        </div>
+
+                                    ) : (
+                                        <div className={styles.field_display_location}>
+                                            <div>
+                                                <span className={styles.location_title}>Latitudine:</span>
+                                                <span>{form.latitude === 0 ? "—" : form.latitude},</span>
+                                            </div>
+                                            <div>
+                                                <span className={styles.location_title}>Longitudine:</span>
+                                                <span>{form.longitude === 0 ? "—" : form.longitude}</span>
+
+                                            </div>
+
+                                        </div>
+                                    )}
+                                </div>
                                 {editing.store && (
                                     <div className={styles.profile_field}>
                                         <label className={styles.profile_field__section_label}>Logo</label>
@@ -318,9 +363,17 @@ function ProfileTab() {
                                     </div>
                                 )}
                                 {editing.store && (
-                                    <button className={styles.save_btn} onClick={handleSaveChanges}>
-                                        Salvează modificările magazin
-                                    </button>
+                                    <div className={styles.save_cancel_btn_container}>
+                                        <button className={styles.cancel_btn} onClick={() => toggleEditing("store")}>
+                                            <X size={20} />
+                                            <span>Renunță</span>
+                                        </button>
+                                        <button className={styles.save_btn} onClick={handleSaveChanges}>
+                                            <Save size={20} />
+                                            <span>Salvează modificările</span>
+                                        </button>
+                                    </div>
+
                                 )}
                             </>
                         ) : (

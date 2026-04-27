@@ -6,4 +6,7 @@ export interface ProductFilters {
     location?: object;
     maxDistanceKm?: number;
     search?: string;
+    lat?: number;
+    lng?: number;
+    radius?:number;
 }

@@ -9,6 +9,8 @@ export interface DashboardStats {
         name: string;
         logo: string;
         description: string;
+        latitude: number;
+        longitude: number;
     } | null;
 }
 

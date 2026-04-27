@@ -1,6 +1,10 @@
 import Form from '../../components/Form.tsx'
 
 function Register() {
-    return <Form route='/api/accounts/register/' method='register' />
+    return (
+        <div className='flex justify-center items-center' style={{ minHeight: '100vh', paddingTop: '4rem' }}>
+            <Form method='register' />
+        </div>
+    )
 }
 export default Register

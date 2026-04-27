@@ -22,6 +22,7 @@ function Form({ method, onSuccess }: FormProps) {
     const navigate = useNavigate()
     const { user, login, register } = useAuth()
     const [showPassword, setShowPassword] = useState(false)
+    const [formError, setFormError] = useState("");
 
     const name = method === 'login' ? 'Autentificare' : 'Înregistrare'
 
@@ -46,8 +47,18 @@ function Form({ method, onSuccess }: FormProps) {
 
             onSuccess?.()
 
-        } catch (error) {
-            alert(error)
+        } catch (error: any) {
+            const data = error.response?.data;
+
+            if (data?.email) {
+                setFormError(data.email[0]);
+            } else if (data?.username) {
+                setFormError(data.username[0]);
+            } else if (data?.detail) {
+                setFormError(data.detail);
+            } else {
+                setFormError("A apărut o eroare.");
+            }
         } finally {
             setLoading(false)
         }
@@ -67,12 +78,18 @@ function Form({ method, onSuccess }: FormProps) {
     return <form onSubmit={handleSubmit} className={`${styles.form_container}`}>
         <h1>{name}</h1>
 
+        {formError && (
+            <div className={styles.form_error}>
+                {formError}
+            </div>
+        )}
+
         <input
             type="text"
             className={`${styles.form_container__input}`}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Nume de utilizator"
+            placeholder={method === "login" ? "Username sau email" : "Nume de utilizator"}
             minLength={3}
             required
         />
@@ -149,6 +166,11 @@ function Form({ method, onSuccess }: FormProps) {
                 <p>
                     Ai deja cont? <Link to="/login">Autentifică-te</Link>
                 </p>
+            )}
+            {method === "login" && (
+                <div className={styles.forgot_password}>
+                    <Link to="/forgot-password">Ai uitat parola?</Link>
+                </div>
             )}
         </div>
     </form>

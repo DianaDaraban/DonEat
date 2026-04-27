@@ -10,10 +10,10 @@ import { useAuth } from "../../context/useAuth.ts"
 import { useWishlist } from "../../context/WishlistContext.tsx"
 import { getGuestCart, setGuestCart } from "../../utils/guestCart.ts"
 import { normalizeGuestItem } from "../../utils/cartNormalizer.ts"
-import api from "../../api.ts"
 import placeholderImage from '../../assets/default_image_icon.jpg'
 import { Heart, Trash, HandCoins } from 'lucide-react'
 const API_URL = import.meta.env.VITE_API_URL
+import ConfirmModal from "../../components/ConfirmModal.tsx"
 
 function CartPage() {
     const { cart, setCart, refreshCart, loading } = useCart()
@@ -21,6 +21,7 @@ function CartPage() {
     const navigate = useNavigate();
     const { user } = useAuth();
     const { toggleWishlist } = useWishlist();
+    const [itemToDelete, setItemToDelete] = useState<CartItem | null>(null);
 
 
     if (loading) {
@@ -102,24 +103,7 @@ function CartPage() {
             return;
         }
 
-        try {
-            const res = await api.post('/api/checkout/');
-            await refreshCart();
-
-            navigate(`/orders/${res.data.order_id}`);
-
-        } catch (err: unknown) {
-            if (err instanceof Error) {
-                alert(err.message);
-            } else if (typeof err === 'object' && err !== null && 'response' in err) {
-                const axiosErr = err as { response?: { data?: { error?: string } } };
-                alert(axiosErr.response?.data?.error || 'Eroare la finalizare comanda');
-            } else {
-                alert('Eroare la finalizare comanda');
-            }
-
-            await refreshCart();
-        }
+        navigate('/checkout');
     }
 
 
@@ -143,7 +127,7 @@ function CartPage() {
                             <div className={styles.cart_item_details__header}>
                                 <div className={styles.cart_item_details__title}>{item.name}</div>
                                 <button
-                                    onClick={() => handleRemoveItem(item)}
+                                    onClick={() => setItemToDelete(item)}
                                     disabled={updatingItems.includes(item.productId)}
                                     className={styles.remove_button}
                                 >
@@ -218,6 +202,20 @@ function CartPage() {
                     <span>Finalizează comanda</span>
                 </button>
             </div>
+            <ConfirmModal
+                open={!!itemToDelete}
+                title="Ștergi produsul din coș?"
+                message={`Produsul "${itemToDelete?.name}" va fi eliminat din coș.`}
+                confirmText="Șterge"
+                cancelText="Renunță"
+                danger
+                onCancel={() => setItemToDelete(null)}
+                onConfirm={() => {
+                    if (!itemToDelete) return;
+                    handleRemoveItem(itemToDelete);
+                    setItemToDelete(null);
+                }}
+            />
         </div>
     )
 }

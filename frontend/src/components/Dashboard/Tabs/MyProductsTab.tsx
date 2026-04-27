@@ -4,6 +4,7 @@ import { ProductAdmin } from "../../../types/ProductAdmin.ts"
 import LoadingIndicator from "../../LoadingIndicator.tsx";
 import styles from '../../Dashboard/styles/MyProductsTab.module.scss'
 import { Trash, RotateCcw, SquarePen, Save, X, ChevronDown, ChevronUp, PackageX } from 'lucide-react'
+import ConfirmModal from "../../ConfirmModal.tsx";
 
 function MyProductsTab() {
     const [products, setProducts] = useState<ProductAdmin[]>([])
@@ -13,6 +14,11 @@ function MyProductsTab() {
     const [editingProduct, setEditingProduct] = useState<ProductAdmin | null>(null)
     const [newExpireDate, setNewExpireDate] = useState('')
     const [editForm, setEditForm] = useState<Partial<ProductAdmin> & { image?: File | string }>({})
+    const [productToDelete, setProductToDelete] = useState<ProductAdmin | null>(null);
+    const [message, setMessage] = useState("");
+    const [messageType, setMessageType] = useState<"success" | "error" | "">("");
+    const [savingProductId, setSavingProductId] = useState<number | null>(null);
+    const [reactivatingProductId, setReactivatingProductId] = useState<number | null>(null);
 
     useEffect(() => {
         let mounted = true
@@ -30,6 +36,17 @@ function MyProductsTab() {
         }
     }, [])
 
+    useEffect(() => {
+        if (!message) return;
+
+        const timer = setTimeout(() => {
+            setMessage("");
+            setMessageType("");
+        }, 3500);
+
+        return () => clearTimeout(timer);
+    }, [message]);
+
     const startEditing = (product: ProductAdmin) => {
         setEditingProduct(product)
         setEditForm({
@@ -38,12 +55,14 @@ function MyProductsTab() {
             price: product.price,
             quantity: product.quantity,
             location: product.location,
-            expires_at: new Date(product.expires_at).toISOString().slice(0, 16)
+            expires_at: new Date(product.expires_at).toISOString().slice(0, 16),
+            original_price: product.original_price ?? "",
         })
     }
 
     const handleSaveEdit = async (product: ProductAdmin) => {
         try {
+            setSavingProductId(product.id);
             const payload = { ...editForm }
             if (product.is_donation && payload.price && Number(payload.price) !== 0) {
                 payload.is_donation = false
@@ -66,44 +85,72 @@ function MyProductsTab() {
                 }
             })
             setProducts(prev => prev.map(p => p.id === product.id ? res.data : p))
-            console.log(editForm, products)
+            setMessage(`Produsul ${product.title} a fost actualizat cu succes.`);
+            setMessageType("success");
             setEditingProduct(null)
-        } catch (err) {
-            alert(`Error updating product: ${err}`)
+        } catch {
+            setMessage(`Eroare la actualizarea produsului "${product.title}".`);
+            setMessageType("error");
+        } finally {
+            setSavingProductId(null);
         }
     }
 
 
-    const handleDelete = async (id: number) => {
-        if (!confirm('Are you sure you want th delete this product?')) return
-
-        await api.delete(`/api/admin/products/${id}/`)
-        setProducts(prev => prev.filter(p => p.id !== id))
-    }
+    const handleDelete = async (product: ProductAdmin) => {
+        await api.delete(`/api/admin/products/${product.id}/`);
+        setProducts(prev => prev.filter(p => p.id !== product.id));
+        setMessage(`Produsul "${product.title}" a fost șters.`);
+        setMessageType("success");
+    };
 
 
     const handleReactivate = async (product: ProductAdmin) => {
-        console.log(newExpireDate, new Date(newExpireDate).toISOString(), product)
         if (!newExpireDate) {
-            alert('Please select a new expiration date')
-            return
+            setMessage(`Selectează o nouă dată de expirare pentru "${product.title}".`);
+            setMessageType("error");
+            return;
         }
 
-        await api.patch(`/api/admin/products/${product.id}/`, {
-            expires_at: new Date(newExpireDate).toISOString(),
-            is_available: true
-        })
+        try {
+            setReactivatingProductId(product.id);
 
-        setEditingProduct(null)
-        setNewExpireDate('')
-        setProducts(prev => prev.map(p => p.id === product.id ?
-            { ...p, expires_at: new Date(newExpireDate).toISOString(), is_available: true }
-            : p))
-    }
+            await api.patch(`/api/admin/products/${product.id}/`, {
+                expires_at: new Date(newExpireDate).toISOString(),
+                is_available: true
+            });
+
+            setNewExpireDate("");
+            setProducts(prev => prev.map(p => p.id === product.id
+                ? { ...p, expires_at: new Date(newExpireDate).toISOString(), is_available: true }
+                : p
+            ));
+
+            setMessage(`Produsul "${product.title}" a fost reactivat.`);
+            setMessageType("success");
+        } catch {
+            setMessage(`Eroare la reactivarea produsului "${product.title}".`);
+            setMessageType("error");
+        } finally {
+            setReactivatingProductId(null);
+        }
+    };
+
+    const sortedProducts = [...products].sort((a, b) => {
+        const now = new Date();
+
+        const aExpired = new Date(a.expires_at) < now;
+        const bExpired = new Date(b.expires_at) < now;
+
+        if (aExpired && !bExpired) return -1;
+        if (!aExpired && bExpired) return 1;
+
+        return new Date(a.expires_at).getTime() - new Date(b.expires_at).getTime();
+    });
 
 
 
-
+    console.log(products)
 
     if (loading) return <LoadingIndicator />
 
@@ -120,8 +167,16 @@ function MyProductsTab() {
     return (
         <div className={`${styles.my_products_tab} flex flex-col `}>
             <h3>Produsele mele</h3>
+            {message && (
+                <div
+                    className={`${styles.form_message} ${messageType === "success" ? styles.success : styles.error
+                        }`}
+                >
+                    {message}
+                </div>
+            )}
             <div>
-                {products.map(p => {
+                {sortedProducts.map(p => {
                     const isExpired = new Date(p.expires_at) < new Date();
                     const isEditing = editingProduct?.id === p.id;
                     const isDetailsOpen = openDetailsId === p.id;
@@ -162,6 +217,19 @@ function MyProductsTab() {
                                                         value={editForm.price}
                                                         onChange={e =>
                                                             setEditForm(prev => ({ ...prev, price: e.target.value }))
+                                                        }
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <span>Preț inițial</span>
+                                                    <input
+                                                        type="number"
+                                                        value={editForm.original_price ?? ""}
+                                                        onChange={e =>
+                                                            setEditForm(prev => ({
+                                                                ...prev,
+                                                                original_price: e.target.value
+                                                            }))
                                                         }
                                                     />
                                                 </div>
@@ -224,9 +292,19 @@ function MyProductsTab() {
                                                     <span>Cantitate</span>
                                                     <span>{p.quantity}</span>
                                                 </div>
+
+                                                {p.original_price && (
+                                                    <div className={`${styles.data_price_quantity_container__quantity_price} flex items-center`}>
+                                                        <span>Preț inițial</span>
+                                                        <span className={styles.old_price}>{p.original_price} lei</span>
+                                                    </div>
+                                                )}
+
                                                 <div className={`${styles.data_price_quantity_container__quantity_price} flex items-center`}>
-                                                    <span>Preț</span>
-                                                    <span>{p.price} lei</span>
+                                                    <span>Preț final</span>
+                                                    <span className={styles.new_price}>
+                                                        {Number(p.price) === 0 ? "Gratuit" : `${p.price} lei`}
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div className={`${styles.data_price_quantity_container__expiration_date} flex ${isExpired ? styles.expired : styles.active}`}>
@@ -240,7 +318,7 @@ function MyProductsTab() {
 
                                 <div className={`${styles.btn_container} flex items-center justify-center`}>
                                     {!isEditing && <Trash
-                                        onClick={() => handleDelete(p.id)}
+                                        onClick={() => setProductToDelete(p)}
                                         color='var(--color-light-red)'
                                         className="cursor-pointer"
                                         size={23}
@@ -270,9 +348,14 @@ function MyProductsTab() {
                                             <button
                                                 className={`${styles.btn_container__save_btn} flex items-center justify-center cursor-pointer`}
                                                 onClick={() => handleSaveEdit(p)}
+                                                disabled={savingProductId === p.id}
                                             >
-                                                <Save size={20} />
-                                                Salvează
+                                                {savingProductId === p.id ? "Se salvează..." : (
+                                                    <>
+                                                        <Save size={20} />
+                                                        Salvează
+                                                    </>
+                                                )}
                                             </button>
 
                                             <button
@@ -297,17 +380,46 @@ function MyProductsTab() {
                                         value={newExpireDate}
                                         onChange={e => setNewExpireDate(e.target.value)}
                                     />
-                                    <button onClick={() => handleReactivate(p)}>
-                                        <RotateCcw size={18} />
-                                        <span>Reactivează</span>
+                                    <button
+                                        onClick={() => handleReactivate(p)}
+                                        disabled={reactivatingProductId === p.id}
+                                    >
+                                        {reactivatingProductId === p.id ? (
+                                            <span>Se reactivează...</span>
+                                        ) : (
+                                            <>
+                                                <RotateCcw size={18} />
+                                                <span>Reactivează</span>
+                                            </>
+                                        )}
                                     </button>
                                 </div>
+                            )}
+                            {savingProductId === p.id && (
+                                <div className={styles.inline_loading}>Se salvează modificările...</div>
+                            )}
+
+                            {reactivatingProductId === p.id && (
+                                <div className={styles.inline_loading}>Se reactivează produsul...</div>
                             )}
                         </div>
                     );
                 })}
             </div>
-
+            <ConfirmModal
+                open={!!productToDelete}
+                title="Ștergi produsul?"
+                message={`Produsul "${productToDelete?.title}" va fi eliminat definitiv.`}
+                confirmText="Șterge"
+                cancelText="Renunță"
+                danger
+                onCancel={() => setProductToDelete(null)}
+                onConfirm={() => {
+                    if (!productToDelete) return;
+                    handleDelete(productToDelete);
+                    setProductToDelete(null);
+                }}
+            />
         </div>
     );
 

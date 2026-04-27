@@ -11,7 +11,7 @@ import NotificationsTab from '../../components/Dashboard/Tabs/NotificationsTab.t
 
 import styles from "./Dashboard.module.scss";
 import { DashboardStatsProvider } from "../../context/DashboardStatsProvider.tsx";
-import AnimatedBackground from "../../styles/animatedBackground/AnimatedBackground.tsx";
+
 
 function Dashboard() {
     const { user } = useAuth();

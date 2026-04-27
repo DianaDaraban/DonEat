@@ -14,13 +14,16 @@
     --color-light-brown: #bf9385;
     --color-light-brown-rgb: 191, 147, 133;
     --color-medium-brown: #955b48;
+    --color-medium-brown-rgb: 149, 91, 72;
     --color-dark-brown: #493630;
     --color-cool-brown: #ac8b67;
+    --color-cool-brown-rgb: 172, 139, 103;
     --color-light-red: #ff5256;
     --color-dark-red: #cd3032;
-    --color-dark-red-rgb:205, 48, 50;
+    --color-dark-red-rgb: 205, 48, 50;
     --color-light-red-rgb: 255, 82, 86;
     --color-text: #2f4858;
+    --color-text-rgb: 47, 72, 88;
     --color-bg: #ffede6;
     --color-bg-2: #fff8f0;
     --color-bg-2-rgb: 255, 248, 240;
@@ -42,4 +45,5 @@
     --font-family-1: "Dosis", sans-serif;
     --font-family-2: "Abel", sans-serif;
     --font-family-3: "Barlow Semi Condensed", sans-serif;
+    --font-family-4: "Playwrite RO", cursive;
 }

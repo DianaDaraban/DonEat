@@ -2,12 +2,14 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Login from './pages/auth/Login.tsx'
 import Register from "./pages/auth/Register.tsx"
-import Home from "./pages/home/Home.tsx"
+import Home from "./pages/Home/Home.tsx"
 import NotFound from "./pages/NotFound.tsx"
 import ProtectedRoute from "./components/ProtectedRoute.tsx"
 import Dashboard from "./pages/dashboard/Dashboard.tsx"
 import Navbar from "./pages/navbar/Navbar.tsx"
 import FooterComponent from "./components/Footer/FooterComponent.tsx"
+import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage.tsx"
+import ResetPasswordPage from "./pages/auth/ResetPasswordPage.tsx"
 import { ProductFilters } from "./types/productFilters.ts"
 import { ProductPublic } from "./types/Product.ts"
 import { ProductOrder } from "./constants/productOrder.ts"
@@ -16,6 +18,7 @@ import OrdersPage from "./pages/orders/OrdersPage.tsx"
 import OrderDetailPage from "./pages/orders/OrderDetailPage.tsx"
 import AboutPage from "./pages/about/AboutPage.tsx"
 import ContactPage from "./pages/contact/ContactPage.tsx"
+import StorePage from "./pages/store/StorePage.tsx"
 import ProductDetailPage from "./pages/product/ProductDetailPage.tsx"
 import { DashboardTabProvider } from "./context/DashboardTabProvider.tsx"
 import { WishlistProvider } from "./context/WishlistProvider.tsx"
@@ -115,8 +118,8 @@ function App() {
               setOrderBy={setOrderBy}
               allProducts={allProducts}
             />
-            <FooterComponent />
-            <div style={{ width: '100vw', height: '100vh' }}>
+
+            <div style={{ width: '100vw', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Routes>
                 <Route path="/dashboard" element={
                   <ProtectedRoute>
@@ -126,6 +129,7 @@ function App() {
 
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="products/:slug" element={<ProductDetailPage />} />
+                <Route path="/store/:ownerId" element={<StorePage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/orders" element={<OrdersPage />} />
                 <Route path="/orders/:id" element={<OrderDetailPage />} />
@@ -142,8 +146,11 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                <Route path="/reset-password/:uidb64/:token" element={<ResetPasswordPage />} />
                 <Route path="/*" element={<NotFound />} />
               </Routes>
+              <FooterComponent />
             </div>
           </DashboardTabProvider>
         </WishlistProvider >

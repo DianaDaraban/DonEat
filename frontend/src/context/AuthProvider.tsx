@@ -3,6 +3,7 @@ import api from "../api.ts";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.ts";
 import { AuthContext } from "./AuthContext.tsx";
 import { UserType, UserRole } from "../types/UserType.ts";
+import publicApi from "../apiPublic.ts";
 
 interface Props {
     children: ReactNode;
@@ -30,7 +31,7 @@ function AuthProvider({ children }: Props) {
     }
 
     const login = async (username: string, password: string) => {
-        const res = await api.post('/api/token/', { username, password })
+        const res = await publicApi.post('/api/token/', { username, password })
 
         localStorage.setItem(ACCESS_TOKEN, res.data.access)
         localStorage.setItem(REFRESH_TOKEN, res.data.refresh)
@@ -46,7 +47,7 @@ function AuthProvider({ children }: Props) {
         lastName: string,
         role: UserRole
     ) => {
-        await api.post('/api/accounts/register/', {
+        await publicApi.post('/api/accounts/register/', {
             username,
             password,
             email,

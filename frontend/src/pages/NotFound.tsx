@@ -1,7 +1,29 @@
+import { useNavigate } from "react-router-dom"
+import styles from "../styles/NotFound.module.scss"
+
 function NotFound() {
-    return <div>
-        <h1>404 Not found</h1>
-        <p>The page you're looking for doesn't exist!</p>
-    </div>
+    const navigate = useNavigate()
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.card}>
+                <h1 className={styles.code}>404</h1>
+
+                <h2>Pagina nu a fost găsită</h2>
+
+                <p>
+                    Se pare că ai ajuns într-un loc unde nu există produse
+                </p>
+
+                <button
+                    className={styles.button}
+                    onClick={() => navigate("/")}
+                >
+                    Înapoi la pagina de pornire
+                </button>
+            </div>
+        </div>
+    )
 }
+
 export default NotFound

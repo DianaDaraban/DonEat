@@ -1,7 +1,7 @@
 .main_container {
     width: 100%;
     min-height: 4rem;
-    margin-top: .7rem;
+    // margin-top: .7rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -14,9 +14,10 @@
         rgba(0, 0, 0, 0.03) 0px -2px 4px -1px;
     color: var(--color-secondary);
     font-size: 0.9rem;
-    position: fixed;
-    bottom: 0;
+    // position: fixed;
+    // bottom: 0;
     z-index: 2;
+    // align-self: flex-end;
 }
 
 /* LOGO + DESCRIERE */
@@ -45,8 +46,9 @@
     flex-direction: column;
     gap: .7rem;
 
-    p {
+    &__content {
         color: var(--color-text);
+        margin: 0;
     }
 }
 

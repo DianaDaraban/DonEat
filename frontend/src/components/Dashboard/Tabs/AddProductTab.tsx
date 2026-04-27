@@ -14,7 +14,8 @@ const EMPTY_FORM = {
     location: '',
     expires_at: '',
     is_donation: false,
-    image: ''
+    image: '',
+    original_price: '',
 } as const;
 
 type ProductForm = {
@@ -27,12 +28,15 @@ type ProductForm = {
     expires_at: string;
     is_donation?: boolean;
     image?: string | File;
+    original_price?: string | number;
 };
 
 function AddProductTab() {
     const [form, setForm] = useState<ProductForm>(EMPTY_FORM);
     const [categories, setCategories] = useState<Category[]>([]);
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState("");
+    const [messageType, setMessageType] = useState<"success" | "error" | "">("");
 
     useEffect(() => {
         api.get<Category[]>('/api/categories/')
@@ -49,6 +53,9 @@ function AddProductTab() {
         e.preventDefault();
         setLoading(true);
 
+        setMessage("");
+        setMessageType("");
+
         try {
             const formData = new FormData();
             formData.append('title', form.title);
@@ -59,23 +66,30 @@ function AddProductTab() {
             formData.append('location', form.location);
             formData.append('expires_at', form.expires_at);
             formData.append('is_donation', String(form.is_donation));
+
             if (form.image instanceof File) {
                 formData.append('image', form.image);
+            }
+
+            if (form.original_price) {
+                formData.append('original_price', String(form.original_price));
             }
 
             const res = await api.post("/api/admin/products/", formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             console.log("Produs adăugat:", res.data);
-            alert('Product added successfully!');
+            setMessage("Produsul a fost adăugat cu succes!");
+            setMessageType("success");
             setForm(EMPTY_FORM);
-            
+
             if (fileInputRef.current) {
                 fileInputRef.current.value = "";
             }
         } catch (err) {
             console.error(err);
-            alert(`Error creating product: ${err}`);
+            setMessage("Eroare la adăugarea produsului. Verifică datele introduse.");
+            setMessageType("error");
         } finally {
             setLoading(false);
         }
@@ -85,7 +99,16 @@ function AddProductTab() {
 
     return (
         <form onSubmit={handleSubmit} className={styles.addProductTab}>
-            <h2>Adaugă un produs nou</h2>
+            <div className={styles.addProductTab_title}>Adaugă un produs nou</div>
+
+            {message && (
+                <div
+                    className={`${styles.form_message} ${messageType === "success" ? styles.success : styles.error
+                        }`}
+                >
+                    {message}
+                </div>
+            )}
 
             <input
                 type="text"
@@ -115,6 +138,17 @@ function AddProductTab() {
                         value={form.price}
                         onChange={handleChange}
                         required
+                        className={styles.addProductTab__price_container__input}
+                    />
+                    <span className={styles.priceSuffix}>Lei</span>
+                </div>
+                <div className={styles.addProductTab__price_container__input_container}>
+                    <input
+                        type="number"
+                        name="original_price"
+                        placeholder="Preț inițial"
+                        value={form.original_price}
+                        onChange={handleChange}
                         className={styles.addProductTab__price_container__input}
                     />
                     <span className={styles.priceSuffix}>Lei</span>

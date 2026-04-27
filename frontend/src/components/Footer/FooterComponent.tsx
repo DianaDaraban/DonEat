@@ -18,10 +18,10 @@ export default function FooterComponent() {
                     className="cursor-pointer"
                 />
                 <div className={styles.credentials_container}>
-                    <p>
+                    <p className={styles.credentials_container__content}>
                         Platformă dedicată gestionării donațiilor și conectării organizațiilor cu persoane care vor să ajute.
-                    </p>
-                    <p>©2026 Doneat</p>
+                    </p >
+                    <p className={styles.credentials_container__content}>©2026 Doneat</p>
                 </div>
 
             </div>
@@ -36,7 +36,7 @@ export default function FooterComponent() {
                         </Link>
                         <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                             <Info color='var(--color-primary)' size={18} />
-                            <span>Despre proiect</span>
+                            <span>Despre noi</span>
                         </Link>
                     </div>
                     <div>

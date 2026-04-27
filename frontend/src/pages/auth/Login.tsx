@@ -10,7 +10,7 @@ function Login() {
     const handleSuccess = () => navigate(from)
 
     return (
-        <div className='flex justify-center items-center w-full h-full'>
+        <div className='flex justify-center items-center w-full h-full' style={{ minHeight: '100vh' }}>
             <Form method='login' onSuccess={handleSuccess} />
         </div>
     )

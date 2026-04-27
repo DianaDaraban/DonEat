@@ -5,10 +5,12 @@ import styles from "./OrderPages.module.scss";
 import LoadingIndicator from "../../components/LoadingIndicator.tsx";
 import { STATUS_RO, OrderStatus } from "../../constants/status.ts";
 import { CircleCheckBig, X, PackageX } from 'lucide-react'
+import ConfirmModal from "../../components/ConfirmModal.tsx";
 
 export default function VendorOrdersPage() {
     const [orders, setOrders] = useState<VendorOrder[]>([]);
     const [loading, setLoading] = useState(true);
+    const [orderToCancel, setOrderToCancel] = useState<number | null>(null);
 
 
     const fetchOrders = async () => {
@@ -49,12 +51,18 @@ export default function VendorOrdersPage() {
         return acc;
     }, {} as Record<string, VendorOrder[]>);
 
+    const groupedOrdersEntries = Object.entries(groupedOrders).sort(
+        (a, b) =>
+            new Date(b[1][0].order_date).getTime() -
+            new Date(a[1][0].order_date).getTime()
+    );
+
     return (
         <div className={styles.vendor_orders}>
             <h3>Comenzi</h3>
 
             <div className={styles.vendor_orders__content}>
-                {Object.entries(groupedOrders).map(([itemId, items]) => (
+                {groupedOrdersEntries.map(([itemId, items]) => (
                     <div key={`${itemId}`} className={styles.card}>
 
                         <div className={styles.header}>
@@ -114,7 +122,7 @@ export default function VendorOrdersPage() {
 
                                         </button>
                                         <button
-                                            onClick={() => updateStatus(items[0].order_id, "CANCELLED")}
+                                            onClick={() => setOrderToCancel(items[0].order_id)}
                                             className={styles.status_update_btn}
                                             style={{ border: `2px solid rgba(var(--color-light-red-rgb), .95)`, color: 'var(--color-dark-red)' }}
                                         >
@@ -130,9 +138,7 @@ export default function VendorOrdersPage() {
 
                                 {items[0].order_status === "SHIPPED" && (
                                     <button
-                                        onClick={() =>
-                                            updateStatus(items[0].order_id, "DELIVERED")
-                                        }
+                                        onClick={() => setOrderToCancel(items[0].order_id)}
                                         className={styles.status_update_btn}
                                     >
                                         <CircleCheckBig
@@ -178,6 +184,20 @@ export default function VendorOrdersPage() {
                     </div>
                 ))}
             </div>
+            <ConfirmModal
+                open={orderToCancel !== null}
+                title="Anulezi comanda?"
+                message={`Comanda nr. ${orderToCancel} va fi anulată. Această acțiune nu poate fi inversată.`}
+                confirmText="Anulează"
+                cancelText="Renunță"
+                danger
+                onCancel={() => setOrderToCancel(null)}
+                onConfirm={() => {
+                    if (!orderToCancel) return;
+                    updateStatus(orderToCancel, "CANCELLED");
+                    setOrderToCancel(null);
+                }}
+            />
         </div>
     );
 }

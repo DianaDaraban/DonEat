@@ -1,0 +1,45 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.loader {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+
+    border: 10px solid rgba(var(--color-grey-rgb), 0.15);
+
+    border-top: 10px solid rgba(var(--color-primary-rgb), 0.95);
+    border-right: 10px solid rgba(var(--color-orange-rgb), 0.85);
+
+    animation: spin 0.75s linear infinite;
+
+    position: relative;
+}
+
+/* glow subtil */
+.loader::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+            rgba(var(--color-primary-rgb), 0.15),
+            transparent 70%);
+    z-index: -1;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

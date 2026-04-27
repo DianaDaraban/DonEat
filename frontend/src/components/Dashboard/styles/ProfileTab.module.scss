@@ -141,6 +141,7 @@
           max-width: 600px;
           position: relative;
 
+
           &__name_inputs {
             gap: .5rem;
           }
@@ -259,6 +260,8 @@
       box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 7px -1px, rgba(0, 0, 0, 0.02) 0px 4px 6px -1px;
       max-width: 740px;
       position: relative;
+      display: flex;
+      gap: 0.5rem;
 
       &__name_inputs {
         gap: .5rem;
@@ -283,9 +286,11 @@
       }
     }
 
-    .field_display {
+    .field_display,
+    .field_display_location {
       display: flex;
       align-items: center;
+      // gap: 0.8rem;
       justify-content: space-between;
       background-color: rgba(var(--color-grey-rgb), 0.1);
       border: 1px solid rgba(var(--color-secondary-rgb), 0.2);
@@ -297,6 +302,20 @@
 
       &__edit_icon {
         color: var(--color-secondary);
+      }
+    }
+
+    .field_display_location {
+      gap: 0.8rem;
+      justify-content: start;
+
+      div {
+        display: flex;
+        gap: 0.3rem;
+      }
+
+      .location_title {
+        font-weight: 500;
       }
     }
 
@@ -347,5 +366,38 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
+  }
+}
+
+.save_cancel_btn_container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .cancel_btn {
+    height: max-content;
+    background-color: rgba(var(--color-light-red-rgb), 0.9);
+    border: 1px solid var(--color-secondary);
+    padding: 0.3rem 3.5rem;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
+    width: max-content;
+    // margin-bottom: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-light-red);
+    }
+  }
+
+  .cancel_btn,
+  .save_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
   }
 }
