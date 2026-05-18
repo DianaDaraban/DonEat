@@ -4,7 +4,9 @@ export interface Notification {
     message: string;
     read: boolean;
     created_at: string;
-    related_order: number
+    related_order: number;
+    related_product: number;
+    related_product_slug: string;
 }
 
 export interface NotificationSettings {

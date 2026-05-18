@@ -1,0 +1,23 @@
+{% extends "emails/base_email.html" %}
+
+{% block content %}
+<h2 style="margin:0 0 16px; font-size:24px; color:#007474;">
+    Salut, {{ user_name }}!
+</h2>
+
+<p style="font-size:16px; line-height:1.65; margin:0 0 16px;">
+    Produsul <strong>{{ product_title }}</strong> din wishlist expiră în curând.
+</p>
+
+<div style="background:#fff0f0; border:1px solid rgba(255,82,86,.35); border-left:5px solid #ff5256; padding:16px; margin:24px 0; border-radius:8px;">
+    <p style="margin:0; font-size:15px; color:#2f4858;">
+        Verifică disponibilitatea produsului înainte să dispară oferta.
+    </p>
+</div>
+
+<div style="text-align:center; margin:30px 0;">
+    <a href="{{ product_url }}" style="display:inline-block; background:#ff5256; color:white; text-decoration:none; padding:13px 24px; border-radius:8px; font-size:15px; font-weight:bold;">
+        Vezi produsul
+    </a>
+</div>
+{% endblock %}

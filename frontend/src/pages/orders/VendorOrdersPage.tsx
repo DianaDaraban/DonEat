@@ -138,7 +138,7 @@ export default function VendorOrdersPage() {
 
                                 {items[0].order_status === "SHIPPED" && (
                                     <button
-                                        onClick={() => setOrderToCancel(items[0].order_id)}
+                                        onClick={() => updateStatus(items[0].order_id, "DELIVERED")}
                                         className={styles.status_update_btn}
                                     >
                                         <CircleCheckBig

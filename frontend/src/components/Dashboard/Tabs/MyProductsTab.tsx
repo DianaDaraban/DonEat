@@ -5,6 +5,7 @@ import LoadingIndicator from "../../LoadingIndicator.tsx";
 import styles from '../../Dashboard/styles/MyProductsTab.module.scss'
 import { Trash, RotateCcw, SquarePen, Save, X, ChevronDown, ChevronUp, PackageX } from 'lucide-react'
 import ConfirmModal from "../../ConfirmModal.tsx";
+import { useNavigate } from "react-router-dom";
 
 function MyProductsTab() {
     const [products, setProducts] = useState<ProductAdmin[]>([])
@@ -19,6 +20,7 @@ function MyProductsTab() {
     const [messageType, setMessageType] = useState<"success" | "error" | "">("");
     const [savingProductId, setSavingProductId] = useState<number | null>(null);
     const [reactivatingProductId, setReactivatingProductId] = useState<number | null>(null);
+    const navigate = useNavigate()
 
     useEffect(() => {
         let mounted = true
@@ -272,7 +274,9 @@ function MyProductsTab() {
                                         </div>
                                     ) : (
                                         <>
-                                            <div className={`${styles.my_products_tab__card__title} flex justify-between items-center`}>
+                                            <div className={`${styles.my_products_tab__card__title} flex justify-between items-center`}
+                                                onClick={() => navigate(`/products/${p.slug}`)}
+                                            >
                                                 <span>{p.title}</span>
                                                 <div
                                                     className="flex items-center"

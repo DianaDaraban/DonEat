@@ -13,6 +13,31 @@ class ProductPublicSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
     store_name = serializers.CharField(
         source='owner.store.name', read_only=True)
+
+    store_logo = serializers.ImageField(
+        source='owner.store.logo',
+        read_only=True
+    )
+
+    store_description = serializers.CharField(
+        source='owner.store.description',
+        read_only=True
+    )
+
+    store_latitude = serializers.DecimalField(
+        source='owner.store.latitude',
+        max_digits=9,
+        decimal_places=6,
+        read_only=True
+    )
+
+    store_longitude = serializers.DecimalField(
+        source='owner.store.longitude',
+        max_digits=9,
+        decimal_places=6,
+        read_only=True
+    )
+
     slug_field = 'title'
 
     class Meta:
@@ -69,11 +94,31 @@ class OrderItemSerializer(serializers.ModelSerializer):
         source='product.title', read_only=True)
     product_image = serializers.ImageField(
         source='product.image', read_only=True)
+    product_slug = serializers.CharField(
+        source='product.slug',
+        read_only=True)
+    store_name = serializers.CharField(
+        source='product.owner.store.name',
+        read_only=True)
+    store_location = serializers.CharField(
+        source='product.location',
+        read_only=True)
+    store_owner = serializers.IntegerField(
+        source='product.owner.id',
+        read_only=True)
 
     class Meta:
         model = OrderItem
-        fields = ['id', 'product', 'product_title',
-                  'quantity', 'price_at_purchase', 'product_image']
+        fields = ['id',
+                  'product',
+                  'product_slug',
+                  'product_title',
+                  'quantity',
+                  'price_at_purchase',
+                  'product_image',
+                  'store_name',
+                  'store_location',
+                  'store_owner',]
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -86,4 +131,5 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ['id', 'created_at', 'total',  'user',
-                  'status', 'items', 'buyer_first_name', 'buyer_last_name']
+                  'status', 'payment_method',
+                  'payment_status', 'items', 'buyer_first_name', 'buyer_last_name']

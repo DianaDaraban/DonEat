@@ -25,6 +25,12 @@ class Product(models.Model):
     unit = models.CharField(max_length=20, default="porții")
     price = models.DecimalField(
         max_digits=8, decimal_places=2, null=True, blank=True)
+    original_price = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
     is_donation = models.BooleanField(default=False)
     expires_at = models.DateTimeField()
     is_available = models.BooleanField(default=True)
@@ -58,7 +64,6 @@ class CartItems(models.Model):
     quantity = models.PositiveBigIntegerField(default=1)
     price_at_add = models.DecimalField(max_digits=10, decimal_places=2)
 
-
     class Meta:
         unique_together = ('cart', 'product')
 
@@ -73,12 +78,34 @@ class Order(models.Model):
         ('CANCELLED', 'Anulată'),
     ]
 
+    PAYMENT_METHODS = [
+        ("cash", "Plată la ridicare"),
+        ("card", "Card online"),
+    ]
+
+    PAYMENT_STATUSES = [
+        ("pending", "În așteptare"),
+        ("paid", "Plătită"),
+    ]
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='PENDING')
+
+    payment_method = models.CharField(
+        max_length=20,
+        choices=PAYMENT_METHODS,
+        default="cash"
+    )
+
+    payment_status = models.CharField(
+        max_length=20,
+        choices=PAYMENT_STATUSES,
+        default="pending"
+    )
 
 
 class OrderItem(models.Model):

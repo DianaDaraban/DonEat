@@ -4,3 +4,4 @@ from .cart import *
 from .orders import *
 from .wishlist import *
 from .dashboard import *
+from .contact import *

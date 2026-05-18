@@ -10,4 +10,5 @@ export type ProductAdmin = {
     description: string;
     location: string;
     is_donation: boolean;
+    slug: string;
 }

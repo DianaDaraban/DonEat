@@ -264,7 +264,7 @@ function ProfileTab() {
                                 Rol
                             </span>
                             <span className={`${styles.profile_field__role_type} flex`}>
-                                {user.role[0].toUpperCase() + user.role.slice(1)}
+                                {user?.role[0]?.toUpperCase() + user.role.slice(1)}
                             </span>
                         </div>
                     </div>

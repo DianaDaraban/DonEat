@@ -1,0 +1,17 @@
+{% extends 'emails/base_email.html' %}
+
+{% block content %}
+  <h2 style="margin:0 0 16px; font-size:24px; color:#007474;">Salut, {{ user_name }}!</h2>
+
+  <p style="font-size:16px; line-height:1.65; margin:0 0 16px;">
+    Contul tău <strong>DonEat</strong> a fost creat cu succes.
+  </p>
+
+  <div style="background:#f1f7df; border:1px solid rgba(138,166,36,.35); border-left:5px solid #8aa624; padding:16px; margin:24px 0; border-radius:8px;">
+    <p style="margin:0; font-size:15px; color:#2f4858;">Acum poți salva produse în wishlist, plasa comenzi și urmări statusul acestora.</p>
+  </div>
+
+  <div style="text-align:center; margin:30px 0;">
+    <a href="{{ site_url }}" style="display:inline-block; background:#8aa624; color:white; text-decoration:none; padding:13px 24px; border-radius:8px; font-size:15px; font-weight:bold;">Intră în aplicație</a>
+  </div>
+{% endblock %}

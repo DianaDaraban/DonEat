@@ -47,7 +47,9 @@ class VendorOrdersView(APIView):
                 'quantity': item.quantity,
                 'price': item.price_at_purchase,
                 'total': item.quantity * item.price_at_purchase,
-                'buyer_name': f"{item.order.user.first_name} {item.order.user.last_name}"
+                'buyer_name': f"{item.order.user.first_name} {item.order.user.last_name}",
+                'payment_method': item.order.payment_method,
+                'payment_status': item.order.payment_status,
             })
 
         return Response(data)

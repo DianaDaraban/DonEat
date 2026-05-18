@@ -76,6 +76,13 @@ class CheckOutView(APIView):
 
     def post(self, request):
         user = request.user
+        
+        payment_method = request.data.get("payment_method", "cash")
+
+        if payment_method not in ["cash", "card"]:
+            return Response({"error": "Metodă de plată invalidă"}, status=400)
+
+        payment_status = "paid" if payment_method == "card" else "pending"
 
         with transaction.atomic():
             cart, _ = Cart.objects.select_for_update().get_or_create(user=user)
@@ -98,7 +105,9 @@ class CheckOutView(APIView):
             order = Order.objects.create(
                 user=user,
                 total=total,
-                status='CONFIRMED'
+                status='PENDING',
+                payment_method=payment_method,
+                payment_status=payment_status
             )
 
             for item in cart_items:

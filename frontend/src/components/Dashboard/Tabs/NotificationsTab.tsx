@@ -17,7 +17,6 @@ export default function NotificationsPage() {
         <h2 style={{ color: 'white', textShadow: '1px 2px 3px rgba(0, 0, 0, 0.3)' }}>Nu ai notificări noi</h2>
         <BellOff size={28} color="var(--color-light-red)" />
     </div>)
-
     return (
         <div className={styles.main_notifications_container}>
             <h3>Notificări</h3>
@@ -32,7 +31,7 @@ export default function NotificationsPage() {
                             <ExternalLink
                                 color="var(--color-primary)"
                                 className={styles.order_link}
-                                onClick={() => navigate(`/orders/${n.related_order}`)}
+                                onClick={() => n.related_order ? navigate(`/orders/${n.related_order}`) : navigate(`/products/${n.related_product_slug}`)}
                             />
                             <div
                                 style={n.read ? { borderColor: 'rgba(var(--color-orange-rgb), 0.6)' } : { borderColor: 'rgba(var(--color-secondary-rgb), 0.6)' }}
