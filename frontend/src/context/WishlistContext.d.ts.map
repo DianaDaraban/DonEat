@@ -1,0 +1,1 @@
+{"version":3,"file":"WishlistContext.d.ts","sourceRoot":"","sources":["WishlistContext.tsx"],"names":[],"mappings":"AAEA,UAAU,mBAAmB;IACzB,QAAQ,EAAE,MAAM,EAAE,CAAA;IAClB,cAAc,EAAE,CAAC,SAAS,EAAC,MAAM,KAAK,OAAO,CAAC,IAAI,CAAC,CAAA;IACnD,OAAO,EAAC,OAAO,CAAA;CAClB;AAED,eAAO,MAAM,eAAe,qDAAkD,CAAC;AAE/E,eAAO,MAAM,WAAW,2BAIvB,CAAA"}

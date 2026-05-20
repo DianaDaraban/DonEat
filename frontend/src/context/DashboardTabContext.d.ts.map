@@ -1,0 +1,1 @@
+{"version":3,"file":"DashboardTabContext.d.ts","sourceRoot":"","sources":["DashboardTabContext.tsx"],"names":[],"mappings":"AAGA,KAAK,uBAAuB,GAAG;IAC3B,SAAS,EAAE,MAAM,CAAC;IAClB,YAAY,EAAE,CAAC,GAAG,EAAE,MAAM,KAAK,IAAI,CAAC;CACvC,CAAA;AAED,eAAO,MAAM,mBAAmB,8DAAgE,CAAA;AAIhG,eAAO,MAAM,eAAe,+BAI3B,CAAA"}
