@@ -120,6 +120,8 @@ function CartPage() {
                             <img
                                 src={`${item.image ? item.image.includes(API_URL) ? item.image : API_URL + item.image : placeholderImage}`}
                                 alt={item.name}
+                                loading="lazy"
+                                decoding="async"
                             />
                         </div>
 

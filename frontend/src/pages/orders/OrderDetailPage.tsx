@@ -118,7 +118,8 @@ export default function OrderDetailPage() {
                                 onClick={() => navigate(`/products/${item.product_slug}`)}
                             >
                                 <div className={styles.image_container}>
-                                    <img src={item.product_image || placeholderImage} alt="" />
+                                    <img src={item.product_image || placeholderImage} alt={item.product_title || ''} loading="lazy"
+                                        decoding="async" />
                                 </div>
                                 <div className={styles.product_details}>
                                     <div className={styles.product_title}>{item.product_title}</div>

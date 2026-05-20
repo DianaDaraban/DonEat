@@ -123,6 +123,8 @@ function ProductDetailPage() {
                                 src={product.image ? product.image.includes(API_URL) ? product.image : API_URL + product.image : placeholderImage}
                                 alt={product.title}
                                 className={styles.card__image}
+                                loading="lazy"
+                                decoding="async"
                             />
                         </div>
 
@@ -235,6 +237,8 @@ function ProductDetailPage() {
                                             src={relatedProduct.image ? relatedProduct.image.includes(API_URL) ? relatedProduct.image : API_URL + relatedProduct.image : placeholderImage}
                                             alt={relatedProduct.title}
                                             className={styles.related_product_image}
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
                                     <div className={styles.related_product_details}>
@@ -323,6 +327,8 @@ function ProductDetailPage() {
                                             }
                                             alt={categoryProduct.title}
                                             className={styles.category_product_image}
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
 

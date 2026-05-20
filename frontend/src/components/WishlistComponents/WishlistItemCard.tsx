@@ -39,6 +39,8 @@ function WishlistItemCard({ product }: { product: ProductPublic }) {
                     src={product.image ? product.image.includes(API_URL) ? product.image : API_URL + product.image : placeholderImage}
                     alt={product.title}
                     className={styles.card__image}
+                    loading="lazy"
+                    decoding="async"
                 />
             </div>
 

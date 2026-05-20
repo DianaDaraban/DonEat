@@ -231,6 +231,8 @@ function Navbar({ filters, setFilters, setOrderBy, allProducts }: NavbarProps) {
                     alt="Doneat logo"
                     onClick={() => navigate('/')}
                     className="cursor-pointer"
+                    loading="lazy"
+                    decoding="async"
                 />
             </div>
 

@@ -53,7 +53,8 @@ function OverviewTab() {
         <div className={styles.dashboard_container}>
             <div className={styles.dashboard_container__company_header}>
                 <div className={styles.dashboard_container__company_header__avatar}>
-                    <img src={API_URL + stats.store?.logo} alt="company-logo" />
+                    <img src={API_URL + stats.store?.logo} alt="company-logo" loading="lazy"
+                        decoding="async" />
                 </div>
                 <h3>{stats.store?.name}
                     <span style={{ color: 'var(--color-secondary)', textShadow: 'none', marginLeft: '1.5rem' }}>/</span>

@@ -96,7 +96,8 @@ function HomeCard({ product }: { product: ProductPublic }) {
         </div>
         <a href="#" className={styles.product_card}>
             <div className={styles.product_card__img_container}>
-                <img src={product.image ? product.image.includes(API_URL) ? product.image : API_URL + product.image : placeholderImage} alt="food" className={styles.product_card__img} />
+                <img src={product.image ? product.image.includes(API_URL) ? product.image : API_URL + product.image : placeholderImage} alt="food" loading="lazy"
+                    decoding="async"  className={styles.product_card__img} />
             </div>
 
         </a>

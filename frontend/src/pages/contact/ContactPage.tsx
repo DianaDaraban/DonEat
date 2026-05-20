@@ -74,6 +74,8 @@ function ContactPage() {
                     <img
                         src={logo}
                         alt="Doneat logo"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </div>
                 <h1>Hai să vorbim</h1>

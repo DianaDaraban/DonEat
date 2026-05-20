@@ -259,7 +259,8 @@ function MyProductsTab() {
                                             <div className="flex flex-col">
                                                 <span>Imagine</span>
                                                 {editForm.image && typeof editForm.image === 'string' && (
-                                                    <img src={editForm.image} alt="Current" className="w-24 h-24 object-cover mb-2" />
+                                                    <img src={editForm.image} alt="Current" loading="lazy"
+                                                        decoding="async" className="w-24 h-24 object-cover mb-2" />
                                                 )}
                                                 <input
                                                     type="file"

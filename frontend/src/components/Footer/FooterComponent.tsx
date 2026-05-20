@@ -16,6 +16,8 @@ export default function FooterComponent() {
                     alt="Doneat logo"
                     onClick={() => navigate('/')}
                     className="cursor-pointer"
+                    loading="lazy"
+                    decoding="async"
                 />
                 <div className={styles.credentials_container}>
                     <p className={styles.credentials_container__content}>

@@ -59,6 +59,8 @@ function StorePage() {
                             <img
                                 src={storeLogo.includes(API_URL) ? storeLogo : API_URL + storeLogo}
                                 alt={storeName}
+                                loading="lazy"
+                                decoding="async"
                             />
                         ) : (
                             <Store size={38} />

@@ -20,6 +20,8 @@ function AboutPage() {
                     <img
                         src={logo}
                         alt="Doneat logo"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </div>
 

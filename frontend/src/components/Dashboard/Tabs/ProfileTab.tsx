@@ -152,6 +152,8 @@ function ProfileTab() {
                                             : (form.avatarPreview || placeholderImage)
                                         )
                                 }
+                                loading="lazy"
+                                decoding="async"
                                 alt="avatar"
                             />
                             {user.role === 'buyer' && (
