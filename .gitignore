@@ -17,7 +17,7 @@ db.sqlite3
 backend/db.sqlite3
 
 # media (uploads)
-backend/media/
+# backend/media/
 
 # =====================
 # ENV
@@ -35,7 +35,7 @@ frontend/.env
 node_modules/
 
 # media
-backend/media/
+# backend/media/
 
 backend/instance/
 *.db
