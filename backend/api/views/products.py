@@ -108,8 +108,6 @@ class ProductsPublicList(ListAPIView):
             except ValueError:
                 pass
 
-        print("Final queryset:", list(
-            filtered_product_list.values_list("title", flat=True)))
         return filtered_product_list
 
 

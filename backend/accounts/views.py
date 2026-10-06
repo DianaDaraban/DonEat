@@ -232,7 +232,3 @@ class ResetPasswordConfirmView(APIView):
 
 class EmailOrUsernameTokenObtainPairView(TokenObtainPairView):
     serializer_class = EmailOrUsernameTokenObtainPairSerializer
-
-    def post(self, request, *args, **kwargs):
-        print("CUSTOM LOGIN VIEW:", request.data)
-        return super().post(request, *args, **kwargs)

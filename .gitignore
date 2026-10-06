@@ -39,3 +39,7 @@ node_modules/
 
 backend/instance/
 *.db
+# Demo database dumps (real accounts, password hashes) never go to git;
+# demo content comes from backend/api/management/commands/demo_data.json
+backend/data.json
+*.sqlite3

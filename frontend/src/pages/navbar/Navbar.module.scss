@@ -950,3 +950,104 @@ input[type="number"] {
     border: 1px solid rgba(var(--color-light-red-rgb), 0.45);
     color: var(--color-dark-red);
 }
+// =====================
+// MOBILE & TABLET (≤ 900px)
+// =====================
+// Desktop keeps the single 5rem bar. Below 900px the bar becomes three rows:
+//   logo + icons  /  page links  /  filters & search (offers page only)
+// so nothing overlaps and the cart / wishlist / account icons stay on screen.
+@media (max-width: 900px) {
+    // Doubled class: beats the Tailwind `flex` utility on the same element
+    .nav_container.nav_container {
+        height: auto;
+        padding: 0.4rem 1rem 0.6rem;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas:
+            "logo icons"
+            "links links"
+            "search search";
+        align-items: center;
+        row-gap: 0.3rem;
+    }
+
+    .logo_container {
+        grid-area: logo;
+        height: 2.8rem;
+
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .icon_container {
+        grid-area: icons;
+        justify-self: end;
+        height: auto;
+        gap: 1.1rem;
+
+        svg {
+            width: 1.35rem;
+            height: 1.35rem;
+        }
+    }
+
+    // The wrapper only groups links + search; let both join the grid directly
+    .navbar_pages_filters_container.navbar_pages_filters_container {
+        display: contents;
+
+        .navbar_page_links_container {
+            grid-area: links;
+            position: static;
+            justify-self: center;
+            gap: 1.75rem;
+            font-size: 0.95rem;
+        }
+    }
+
+    .search_filter_container {
+        grid-area: search;
+        margin-top: 0.3rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 1rem;
+        gap: 0.5rem;
+
+        .search_container {
+            flex: 1 1 100%;
+            order: 3;
+        }
+    }
+
+    .filter_container,
+    .order_container,
+    .order_container:first-of-type {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+    }
+
+    .filter_container__dropdown_container,
+    .order_dropdown_container {
+        min-width: 0;
+    }
+
+    .map_filter_btn {
+        flex: 0 0 auto;
+    }
+
+    // Vendor shortcut: icon only, the label doesn't fit next to the logo
+    .add_product_nav_btn {
+        margin-right: 0;
+        padding: 0.35rem 0.5rem;
+
+        span {
+            display: none;
+        }
+    }
+
+    // Name + role label above the user icon would collide with the links row
+    .user_container__name_role {
+        display: none;
+    }
+}

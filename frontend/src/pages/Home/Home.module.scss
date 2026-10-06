@@ -647,3 +647,21 @@
     font-size: 0.95rem;
     margin-left: 0.2rem;
 }
+// =====================
+// MOBILE & TABLET (≤ 900px)
+// =====================
+// The navbar grows to three rows here (logo/icons, links, filters & search), so the grid
+// starts lower; cards shrink to the screen instead of keeping their fixed desktop width.
+@media (max-width: 900px) {
+    .cards_container {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+        justify-items: center;
+        padding: 13.5rem 1rem 1rem;
+        margin: 0;
+    }
+
+    .product_card_container {
+        width: 100%;
+        max-width: 21.5rem;
+    }
+}
